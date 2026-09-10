@@ -1,3 +1,4 @@
+import AmiraeSection from "@/components/amirae";
 import ContactSection from "@/components/contact";
 import FooterSection from "@/components/footer";
 import { Navbar } from "@/components/Navbar";
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <ProductSection/>
       <TeamSection/>
+      <AmiraeSection />
       <ContactSection/>
       <FooterSection />
     </div>
