@@ -5,52 +5,56 @@ const PROJECTS = [
     id: '01',
     title: 'FrameCity',
     date: 'AUG 6, 2026',
-    desc: 'Hand-modelled city skylines, sculpted to fit inside a picture frame — and print without a single support.',
+    desc: 'Hand-modelled city skylines, sculpted to fit inside a picture frame — and print without a single support. Earned $1,700+ through crowdfunding on MakerWorld.',
     tags: ['3D PRINTING', 'MINIATURES'],
     bgColor: 'bg-[#4db8ff]', // Cyan
     textColor: 'text-black',
     borderColor: 'border-black',
     image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&q=80&w=1200', // City skyline
+    link: 'https://frame-city.vercel.app/',
   },
   {
     id: '02',
-    title: 'Food Clicks',
+    title: 'VibeArt.in',
     date: 'JUN 14, 2026',
-    desc: 'Dishes recreated in hyper-detailed miniature — where culinary craft meets sculptural precision.',
-    tags: ['PRODUCT ART', 'SCULPTING'],
+    desc: 'AI-powered image and video generation platform featuring multiple models, prompt enhancements, and an advanced node-based canvas workflow.',
+    tags: ['AI GENERATION', 'FULL STACK'],
     bgColor: 'bg-[#1a1a1a]', // Black
     textColor: 'text-white',
     borderColor: 'border-[#333]',
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1200', // Plated food
+    image: "/robot.avif",
+    link: 'https://vibeart.in',
   },
   {
     id: '03',
-    title: 'Sea World: Articulated',
-    date: 'APR 2, 2026',
-    desc: 'Fully articulated marine-life models — realistic anatomy, poseable joints, print-in-place mechanics.',
-    tags: ['ARTICULATED', 'ENGINEERING'],
+    title: 'Food Clicks',
+    date: 'UpComing',
+    desc: 'Hyper-detailed miniature 3D models of food items tailored for interactive clickers and tabletop displays.',
+    tags: ['PRODUCT ART', 'TABLETOP'],
     bgColor: 'bg-[#f0c239]', // Yellow
     textColor: 'text-black',
     borderColor: 'border-black',
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=1200', // Marine life
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1200', // Plated food
+    link: '#',
   },
   {
     id: '04',
-    title: 'Heritage Landmarks',
-    date: 'JAN 10, 2026',
-    desc: 'Commissioned architectural models of historic buildings across London, New York, and Boston.',
-    tags: ['ARCHITECTURE', 'COMMISSIONS'],
+    title: 'Individual Buildings',
+    date: 'UpComing',
+    desc: 'Intricately detailed 3D printable models of standalone historic and modern architectural landmarks from around the globe.',
+    tags: ['ARCHITECTURE', '3D MODELS'],
     bgColor: 'bg-[#e6005c]', // Pink
     textColor: 'text-white',
     borderColor: 'border-white/20',
     image: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=80&w=1200', // Historic building
+    link: '#',
   }
 ];
 
 export default function ProductSection() {
   return (
     // The main wrapper has a custom SVG grid background defined in standard CSS
-    <div className="relative pt-32  font-sans">
+    <div id="projects" className="relative pt-32 font-sans">
       {/* 
         PROJECT STACK
         Each project is a sticky container. As you scroll, they stack on top of each other. 
@@ -58,7 +62,7 @@ export default function ProductSection() {
       {PROJECTS.map((project, index) => (
         <div 
           key={project.id} 
-          className="sticky top-0  flex flex-col pt-12 md:pt-16 m-32 drop-shadow-xl"
+          className="sticky top-0 flex flex-col pt-12 md:pt-16 m-32 drop-shadow-xl"
           style={{ zIndex: index * 10 }}
         >
           {/* 
@@ -107,7 +111,9 @@ export default function ProductSection() {
 
                 {/* CTA Link */}
                 <a 
-                  href="#" 
+                  href={project.link} 
+                  target={project.link.startsWith('http') ? '_blank' : '_self'}
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 mt-8 font-mono text-sm uppercase tracking-widest hover:opacity-70 transition-opacity"
                 >
                   View Project <span className="text-lg leading-none">↗</span>

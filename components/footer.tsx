@@ -48,9 +48,10 @@ export default function FooterSection() {
           
           {/* Column 1: Brand & Bio */}
           <div className="md:col-span-1 flex flex-col gap-4">
-            <h3 className="text-2xl font-black tracking-tight text-black">
+            <a href="#" ><img src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/brand/amirae_studio_logo-removebg-preview.webp" alt="Amiraé Studio" className="w-20 h-20" /></a>
+            {/* <h3 className="text-2xl font-black tracking-tight text-black">
               Amiraé Studio
-            </h3>
+            </h3> */}
             <p className="text-xs text-gray-800 leading-relaxed font-medium">
               Engineering high-precision physical art, 3D architectural models, and next-gen AI media canvas engines.
             </p>
