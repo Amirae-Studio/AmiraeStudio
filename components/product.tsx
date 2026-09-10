@@ -1,189 +1,164 @@
-"use client";
+import { Folder, Image as ImageIcon } from 'lucide-react';
 
-// Amiraé Studio Color Palette adapted for Light Theme
-const COLORS = {
-  vibrantTeal: "#0D9488", // Deep Teal for high contrast on light bg
-  pixelLime: "#84CC16",   // Lime accent
-  lightBg: "#FFFFFF",     // White background
-  borderGlass: "rgba(0, 0, 0, 0.08)", // Soft border for light theme
-  cyanBorder: "#2AD5C6",  // Bottom border line color
-};
-
-interface ProductItem {
-  id: string;
-  title: string;
-  tagline: string;
-  description: string;
-  badge: string;
-  badgeColor: string;
-  badgeTextColor?: string;
-  isUpcoming?: boolean;
-  features: string[];
-  metrics?: string;
-}
-
-const products: ProductItem[] = [
+const PROJECTS = [
   {
-    id: "framecity",
-    title: "FrameCity",
-    tagline: "High Detailed Cities in Frames",
-    description:
-      "Hand-modelled city districts, engineered for a perfect print. Pick your place, print your frame. Our breakout crowdfunded masterpiece.",
-    badge: "$16,633 Raised on Kickstarter",
-    badgeColor: "#2AD5C6",
-    badgeTextColor: "#000",
-    metrics: "167 Backers • 1600%+ Funded",
-    features: [
-      "Precision 3D City Wireframes",
-      "Hand-modelled architectural scale",
-      "Ready-to-print & framed physical art",
-    ],
+    id: '01',
+    title: 'FrameCity',
+    date: 'AUG 6, 2026',
+    desc: 'Hand-modelled city skylines, sculpted to fit inside a picture frame — and print without a single support.',
+    tags: ['3D PRINTING', 'MINIATURES'],
+    bgColor: 'bg-[#4db8ff]', // Cyan
+    textColor: 'text-black',
+    borderColor: 'border-black',
+    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&q=80&w=1200', // City skyline
   },
   {
-    id: "vibeart",
-    title: "VibeArt.in",
-    tagline: "AI-Powered Visual Canvas Engine",
-    description:
-      "Advanced AI media suite enabling multi-model image and video generation using node-based canvas logic for precise creative control.",
-    badge: "Live Platform",
-    badgeColor: "#2AD5C6",
-    badgeTextColor: "#000",
-    features: [
-      "Multi-Model AI Workflows (Flux & SD)",
-      "Interactive Node Canvas Engine",
-      "High-Precision Image & Video Synthesis",
-    ],
+    id: '02',
+    title: 'Food Clicks',
+    date: 'JUN 14, 2026',
+    desc: 'Dishes recreated in hyper-detailed miniature — where culinary craft meets sculptural precision.',
+    tags: ['PRODUCT ART', 'SCULPTING'],
+    bgColor: 'bg-[#1a1a1a]', // Black
+    textColor: 'text-white',
+    borderColor: 'border-[#333]',
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1200', // Plated food
   },
   {
-    id: "food-clickers",
-    title: "Food Item Clickers",
-    tagline: "Sensory Culinary 3D Accessories",
-    description:
-      "Interactive, tactile food-themed clicker designs and sensory 3D accessories engineered for niche product enthusiasts and custom desktop gear.",
-    badge: "Upcoming Project",
-    badgeColor: "#2AD5C6",
-    badgeTextColor: "#FFF",
-    isUpcoming: true,
-    features: [
-      "Tactile Clicker Mechanism",
-      "Hyper-detailed Food Textures",
-      "Custom Collectible Desk Art",
-    ],
+    id: '03',
+    title: 'Sea World: Articulated',
+    date: 'APR 2, 2026',
+    desc: 'Fully articulated marine-life models — realistic anatomy, poseable joints, print-in-place mechanics.',
+    tags: ['ARTICULATED', 'ENGINEERING'],
+    bgColor: 'bg-[#f0c239]', // Yellow
+    textColor: 'text-black',
+    borderColor: 'border-black',
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=1200', // Marine life
   },
   {
-    id: "city-buildings",
-    title: "Individual City Buildings",
-    tagline: "Micro-Detailed Landmark Models",
-    description:
-      "Standalone architectural prints of iconic skyscrapers and custom structures designed for collectors, architects, and tabletop displays.",
-    badge: "Upcoming Project",
-    badgeColor: "#2AD5C6",
-    badgeTextColor: "#FFF",
-    isUpcoming: true,
-    features: [
-      "Micro-Detailed Architectural Geometry",
-      "Isolated Landmark Extraction",
-      "Custom Scaled Display Displays",
-    ],
-  },
+    id: '04',
+    title: 'Heritage Landmarks',
+    date: 'JAN 10, 2026',
+    desc: 'Commissioned architectural models of historic buildings across London, New York, and Boston.',
+    tags: ['ARCHITECTURE', 'COMMISSIONS'],
+    bgColor: 'bg-[#e6005c]', // Pink
+    textColor: 'text-white',
+    borderColor: 'border-white/20',
+    image: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=80&w=1200', // Historic building
+  }
 ];
 
 export default function ProductSection() {
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-white text-gray-900 overflow-hidden font-sans">
-      {/* Soft background glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full opacity-15 blur-[140px] pointer-events-none"
-        style={{ background: "#2AD5C6" }}
-      />
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900">
-            Our Products & Innovations
-          </h2>
-        </div>
-
-        {/* Vertical Stack / Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="relative flex flex-col justify-between rounded-3xl p-8 backdrop-blur-xl border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 overflow-hidden"
+    // The main wrapper has a custom SVG grid background defined in standard CSS
+    <div className="relative pt-32  font-sans">
+      {/* 
+        PROJECT STACK
+        Each project is a sticky container. As you scroll, they stack on top of each other. 
+      */}
+      {PROJECTS.map((project, index) => (
+        <div 
+          key={project.id} 
+          className="sticky top-0  flex flex-col pt-12 md:pt-16 m-32 drop-shadow-xl"
+          style={{ zIndex: index * 10 }}
+        >
+          {/* 
+            TAB LAYER
+            Positioned absolutely at the top of the sticky container.
+            It's mostly transparent, so tabs from the sections below remain visible.
+          */}
+          <div className="absolute top-0 left-0 w-full h-12 md:h-16 pointer-events-none z-20">
+            <div 
+              className={`absolute bottom-[-2px] h-full pointer-events-auto flex items-center px-4 md:px-8 gap-2 font-mono text-xs md:text-sm font-bold tracking-widest ${project.bgColor} ${project.textColor}`}
               style={{
-                background: "rgba(255, 255, 255, 0.9)",
-                borderColor: COLORS.borderGlass,
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
+                // Stagger the tabs based on their index
+                left: `max(0px, calc(${index} * 16vw))`,
+                minWidth: '180px',
+                // Custom trapezoid shape for the folder tab look
+                clipPath: 'polygon(1.5rem 0, calc(100% - 1.5rem) 0, 100% 100%, 0 100%)'
               }}
             >
+              <Folder size={14} className="opacity-80" /> PROJECT {project.id}
+            </div>
+          </div>
+
+          {/* 
+            BODY LAYER 
+            Fills the rest of the screen. Top border matches the technical aesthetic.
+          */}
+          <div className={`flex-1 w-full ${project.bgColor} ${project.textColor} ${project.borderColor} overflow-hidden flex flex-col md:flex-row relative z-10`}>
+            
+            {/* Left Column: Project Info */}
+            <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-between">
+              
               <div>
-                {/* Top Pill Status Badge */}
-                <div className="flex items-center justify-between flex-wrap gap-2 mb-6">
-                  <span
-                    className="px-3.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase shadow-sm"
-                    style={{
-                      background: product.badgeColor,
-                      color: product.badgeTextColor || "#000",
-                    }}
-                  >
-                    {product.badge}
-                  </span>
-                  {product.metrics && (
-                    <span className="text-xs text-gray-500 font-mono">
-                      {product.metrics}
-                    </span>
-                  )}
-                  {product.isUpcoming && (
-                    <span
-                      className="text-xs font-mono font-semibold"
-                      style={{ color: COLORS.vibrantTeal }}
-                    >
-                      [ NEXT UP ]
-                    </span>
-                  )}
+                {/* Date / Status */}
+                <div className="font-mono text-xs md:text-sm flex items-center gap-3 uppercase tracking-wider mb-8">
+                  <div className={`w-3 h-3 rounded-full ${project.textColor === 'text-white' ? 'bg-white' : 'bg-black'}`} />
+                  {project.date}
                 </div>
 
-                {/* Title & Tagline */}
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
-                  {product.title}
-                </h3>
-                <p
-                  className="text-sm sm:text-base italic font-serif mb-4"
-                  style={{ color: COLORS.vibrantTeal }}
-                >
-                  {product.tagline}
+                {/* Title & Desc */}
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-none mb-6">
+                  {project.title}
+                </h2>
+                <p className="text-lg md:text-xl opacity-90 max-w-md leading-relaxed">
+                  {project.desc}
                 </p>
 
-                {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                  {product.description}
-                </p>
+                {/* CTA Link */}
+                <a 
+                  href="#" 
+                  className="inline-flex items-center gap-2 mt-8 font-mono text-sm uppercase tracking-widest hover:opacity-70 transition-opacity"
+                >
+                  View Project <span className="text-lg leading-none">↗</span>
+                </a>
               </div>
 
-              {/* Feature Highlights List */}
-              <div className="pt-6 border-t border-gray-100 flex flex-col gap-2 mb-4">
-                {product.features.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-2 text-xs sm:text-sm text-gray-700 p-2.5 rounded-xl border border-gray-100"
-                    style={{ background: "rgba(0, 0, 0, 0.02)" }}
+              {/* Bottom Tags */}
+              <div className="flex flex-wrap gap-2 mt-12 md:mt-0">
+                {project.tags.map(tag => (
+                  <span 
+                    key={tag} 
+                    className={`font-mono text-xs md:text-sm px-3 py-1.5 font-bold ${
+                      project.textColor === 'text-white' ? 'bg-white text-black' : 'bg-black text-white'
+                    }`}
                   >
-                    <span style={{ color: COLORS.vibrantTeal }}>✦</span>
-                    <span>{feature}</span>
-                  </div>
+                    {tag}
+                  </span>
                 ))}
               </div>
-
-             
             </div>
-          ))}
+
+            {/* Right Column: Imagery */}
+            <div className={`w-full md:w-1/2 h-[50vh] md:h-auto border-t-2 md:border-t-0 md:border-l-2 ${project.borderColor} p-6 md:p-12 relative flex items-center justify-center`}>
+              
+              {/* Image Container with crosshairs/brackets */}
+              <div className={`relative w-full h-full max-h-[70vh] border-2 ${project.borderColor} overflow-hidden`}>
+                
+                {/* Corner Accents */}
+                <div className={`absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 ${project.borderColor} z-10 m-2`} />
+                <div className={`absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 ${project.borderColor} z-10 m-2`} />
+                <div className={`absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 ${project.borderColor} z-10 m-2`} />
+                <div className={`absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 ${project.borderColor} z-10 m-2`} />
+
+                {/* Faux UI Label */}
+                <div className={`absolute top-4 right-4 z-10 font-mono text-xs px-3 py-1.5 flex items-center gap-2 shadow-sm ${
+                  project.textColor === 'text-white' ? 'bg-white text-black' : 'bg-black text-white'
+                }`}>
+                  <ImageIcon size={14} /> IMAGE.JPG
+                </div>
+
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                />
+              </div>
+
+            </div>
+          </div>
         </div>
-      </div>
-      <div 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-32 sm:w-48 rounded-full"
-        style={{ backgroundColor: COLORS.cyanBorder }}
-      />
-    </section>
+      ))}
+    </div>
   );
 }

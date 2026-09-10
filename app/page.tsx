@@ -1,6 +1,8 @@
 import ContactSection from "@/components/contact";
 import FooterSection from "@/components/footer";
-import Hero from "@/components/hero";
+import { Navbar } from "@/components/Navbar";
+import HeroSection from "@/components/pages/Hero";
+
 import ProductSection from "@/components/product";
 import TeamSection from "@/components/team";
 
@@ -9,7 +11,8 @@ import TeamSection from "@/components/team";
 export default function Home() {
   return (
     <div>
-      <Hero />
+      <Navbar />
+      <HeroSection />
       <ProductSection/>
       <TeamSection/>
       <ContactSection/>
