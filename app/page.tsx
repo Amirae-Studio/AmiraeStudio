@@ -1,5 +1,7 @@
 import ContactSection from "@/components/contact";
+import FaqSection from "@/components/Faq";
 import FooterSection from "@/components/footer";
+import { ImageSlideshow } from "@/components/Image";
 import { Navbar } from "@/components/Navbar";
 import HeroSection from "@/components/pages/Hero";
 
@@ -43,6 +45,8 @@ export default function Home() {
       <HeroSection />
       <ProductSection/>
       <TeamSection/>
+      <FaqSection />
+      <ImageSlideshow/>
       <ContactSection/>
       <FooterSection />
     </div>

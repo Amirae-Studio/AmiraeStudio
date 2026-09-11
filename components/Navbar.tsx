@@ -7,7 +7,8 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Projects", href: "#projects" },
-    { name: "Team", href: "#team" }
+    { name: "Team", href: "#team" },
+    {name:"Faq", href:"#faq"}
   ];
 
   return (
