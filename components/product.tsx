@@ -15,18 +15,18 @@ const PROJECTS = [
   },
   {
     id: '02',
-    title: 'VibeArt.in',
+    title: 'Maze Foundry',
     date: 'JUN 14, 2026',
-    desc: 'AI-powered image and video generation platform featuring multiple models, prompt enhancements, and an advanced node-based canvas workflow.',
-    tags: ['AI GENERATION', 'FULL STACK'],
+    desc: 'used for creating mazes in different sizes , dimensions and shapes as per user requirement  ',
+    tags: ['3D PRINTING', 'MINIATURES'],
     bgColor: 'bg-[#1a1a1a]', // Black
     textColor: 'text-white',
     borderColor: 'border-[#333]',
-    image: "/robot.avif",
-    link: 'https://vibeart.in',
+    image: "/maze.png",
+    link: 'https://maze-foundry.vercel.app/',
   },
   {
-    id: '03',
+    id: '02',
     title: 'Food Clicks',
     date: 'UpComing',
     desc: 'Hyper-detailed miniature 3D models of food items tailored for interactive clickers and tabletop displays.',
@@ -38,8 +38,8 @@ const PROJECTS = [
     link: '#',
   },
   {
-    id: '04',
-    title: 'Individual Buildings',
+    id: '03',
+    title: 'Heritage Buildings',
     date: 'UpComing',
     desc: 'Intricately detailed 3D printable models of standalone historic and modern architectural landmarks from around the globe.',
     tags: ['ARCHITECTURE', '3D MODELS'],
@@ -53,31 +53,21 @@ const PROJECTS = [
 
 export default function ProductSection() {
   return (
-    // The main wrapper has a custom SVG grid background defined in standard CSS
-    <div id="projects" className="relative pt-32 font-sans">
-      {/* 
-        PROJECT STACK
-        Each project is a sticky container. As you scroll, they stack on top of each other. 
-      */}
+    // Replaced generic font-sans with the exact hero typography / custom font class family
+    <div id="projects" className="relative pt-32 font-[family-name:var(--font-your-hero-font)]">
       {PROJECTS.map((project, index) => (
         <div 
           key={project.id} 
           className="sticky top-0 flex flex-col pt-12 md:pt-16 m-32 drop-shadow-xl"
           style={{ zIndex: index * 10 }}
         >
-          {/* 
-            TAB LAYER
-            Positioned absolutely at the top of the sticky container.
-            It's mostly transparent, so tabs from the sections below remain visible.
-          */}
+          {/* TAB LAYER */}
           <div className="absolute top-0 left-0 w-full h-12 md:h-16 pointer-events-none z-20">
             <div 
               className={`absolute bottom-[-2px] h-full pointer-events-auto flex items-center px-4 md:px-8 gap-2 font-mono text-xs md:text-sm font-bold tracking-widest ${project.bgColor} ${project.textColor}`}
               style={{
-                // Stagger the tabs based on their index
                 left: `max(0px, calc(${index} * 16vw))`,
                 minWidth: '180px',
-                // Custom trapezoid shape for the folder tab look
                 clipPath: 'polygon(1.5rem 0, calc(100% - 1.5rem) 0, 100% 100%, 0 100%)'
               }}
             >
@@ -85,15 +75,11 @@ export default function ProductSection() {
             </div>
           </div>
 
-          {/* 
-            BODY LAYER 
-            Fills the rest of the screen. Top border matches the technical aesthetic.
-          */}
+          {/* BODY LAYER */}
           <div className={`flex-1 w-full ${project.bgColor} ${project.textColor} ${project.borderColor} overflow-hidden flex flex-col md:flex-row relative z-10`}>
             
             {/* Left Column: Project Info */}
             <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-between">
-              
               <div>
                 {/* Date / Status */}
                 <div className="font-mono text-xs md:text-sm flex items-center gap-3 uppercase tracking-wider mb-8">
@@ -102,7 +88,7 @@ export default function ProductSection() {
                 </div>
 
                 {/* Title & Desc */}
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-none mb-6">
+                <h2 className="text-5xl text-balance md:text-7xl lg:text-8xl font-medium tracking-tight leading-none mb-6">
                   {project.title}
                 </h2>
                 <p className="text-lg md:text-xl opacity-90 max-w-md leading-relaxed">
@@ -137,17 +123,12 @@ export default function ProductSection() {
 
             {/* Right Column: Imagery */}
             <div className={`w-full md:w-1/2 h-[50vh] md:h-auto border-t-2 md:border-t-0 md:border-l-2 ${project.borderColor} p-6 md:p-12 relative flex items-center justify-center`}>
-              
-              {/* Image Container with crosshairs/brackets */}
               <div className={`relative w-full h-full max-h-[70vh] border-2 ${project.borderColor} overflow-hidden`}>
-                
-                {/* Corner Accents */}
                 <div className={`absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 ${project.borderColor} z-10 m-2`} />
                 <div className={`absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 ${project.borderColor} z-10 m-2`} />
                 <div className={`absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 ${project.borderColor} z-10 m-2`} />
                 <div className={`absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 ${project.borderColor} z-10 m-2`} />
 
-                {/* Faux UI Label */}
                 <div className={`absolute top-4 right-4 z-10 font-mono text-xs px-3 py-1.5 flex items-center gap-2 shadow-sm ${
                   project.textColor === 'text-white' ? 'bg-white text-black' : 'bg-black text-white'
                 }`}>
@@ -160,8 +141,8 @@ export default function ProductSection() {
                   className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
                 />
               </div>
-
             </div>
+
           </div>
         </div>
       ))}
