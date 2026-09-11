@@ -34,7 +34,7 @@ const PROJECTS = [
     bgColor: 'bg-[#f0c239]', // Yellow
     textColor: 'text-black',
     borderColor: 'border-black',
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1200', // Plated food
+    image: '/click.png', // Plated food
     link: '#',
   },
   {

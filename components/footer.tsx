@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { motion, useInView, Variants } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView, Variants, AnimatePresence } from "framer-motion";
 import { GradientComponent } from "./GradientComponent";
 import GlassPaneBG from "./GlassPlane";
 
@@ -35,7 +35,7 @@ const socialLinks = [
   },
   { 
     name: "Gmail", 
-    href: "mailto:hello@amirae.studio", 
+    href: "mailto:arun@amirae.studio", 
     svgPath: "M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.713v13.426h24v-13.426l-12 9.713z" 
   },
   { 
@@ -67,6 +67,16 @@ const fadeUpVariant: Variants = {
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
   const isInView = useInView(footerRef, { once: true, margin: "0px 0px -80px 0px" });
+  const [copied, setCopied] = useState(false);
+
+  const handleEmailClick = (e: React.MouseEvent, socialName: string, email: string) => {
+    if (socialName === "Gmail") {
+      e.preventDefault();
+      navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   return (
     <footer
@@ -186,30 +196,48 @@ const Footer = () => {
             <p className="text-center text-xs font-semibold text-gray-900 sm:text-left">
               &copy; {new Date().getFullYear()} Amiraé Studio. All Rights Reserved.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {socialLinks.map((social, i) => (
-                <motion.a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.name}
-                  whileHover={{ y: -3, scale: 1.05 }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-black/15 bg-white/50 text-xs font-bold text-black transition-all hover:bg-black hover:text-white"
-                >
-                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path d={social.svgPath} />
-                  </svg>
-                  <span>{social.name}</span>
-                </motion.a>
-              ))}
+            <div className="relative flex flex-wrap items-center justify-center gap-3">
+              {/* Copy Notification Toast */}
+              <AnimatePresence>
+                {copied && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                    animate={{ opacity: 1, y: -8, scale: 1 }}
+                    exit={{ opacity: 0, y: 4, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute -top-10 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap rounded-md bg-black px-2.5 py-1 text-[11px] font-bold text-white shadow-lg pointer-events-none"
+                  >
+                    Email copied!
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {socialLinks.map((social) => {
+                const emailMatch = social.href.match(/^mailto:(.+)$/);
+                const emailAddress = emailMatch ? emailMatch[1] : "";
+
+                return (
+                  <motion.a
+                    key={social.name}
+                    href={social.href}
+                    onClick={(e) => handleEmailClick(e, social.name, emailAddress)}
+                    target={social.name === "Gmail" ? "_self" : "_blank"}
+                    rel={social.name === "Gmail" ? "" : "noopener noreferrer"}
+                    aria-label={social.name}
+                    whileHover={{ y: -3, scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-black/15 bg-white/50 text-xs font-bold text-black transition-all hover:bg-black hover:text-white"
+                  >
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d={social.svgPath} />
+                    </svg>
+                    <span>{social.name}</span>
+                  </motion.a>
+                );
+              })}
             </div>
           </motion.div>
         </div>
-
-        {/* ── Decorative image ── */}
-       
-     
     </footer>
   );
 };

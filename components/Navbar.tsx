@@ -7,8 +7,7 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Projects", href: "#projects" },
-    { name: "Team", href: "#team" },
-    { name: "Why Amiraé", href: "#why-amirae" },
+    { name: "Team", href: "#team" }
   ];
 
   return (

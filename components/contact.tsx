@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactSection() {
   const [step, setStep] = useState(1);
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({
     message: "",
     name: "",
@@ -35,6 +37,13 @@ export default function ContactSection() {
   const handleNext = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.message.trim()) setStep(2);
+  };
+
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    navigator.clipboard.writeText("arun@amirae.studio");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -271,7 +280,22 @@ export default function ContactSection() {
           </div>
 
           {/* 3D Floating Social Pill */}
-          <div className="inline-flex items-center gap-8 mt-8 bg-white/80 backdrop-blur-md border border-gray-200  px-8 py-5 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+          <div className="relative inline-flex items-center gap-8 mt-8 bg-white/80 backdrop-blur-md border border-gray-200  px-8 py-5 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+            {/* Copy Notification Toast */}
+            <AnimatePresence>
+              {copied && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                  animate={{ opacity: 1, y: -8, scale: 1 }}
+                  exit={{ opacity: 0, y: 4, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute -top-10 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap rounded-md bg-black px-2.5 py-1 text-[11px] font-bold text-white shadow-lg pointer-events-none"
+                >
+                  Email copied!
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* Instagram */}
             <a href="https://www.instagram.com/amirae__studio/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-gray-900 hover:text-[#2AD5C6] transition-colors">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -291,13 +315,13 @@ export default function ContactSection() {
             </a>
 
             {/* Email */}
-            <a href="mailto:hello@amirae.studio" className="flex flex-col items-center gap-2 text-gray-900 hover:text-amber-600 transition-colors">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect width="20" height="16" x="2" y="4" rx="2"/>
-    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-  </svg>
-  <span className="text-[11px] font-mono font-bold uppercase tracking-wider">Mail</span>
-</a>
+            <a href="mailto:arun@amirae.studio" onClick={handleEmailClick} className="flex flex-col items-center gap-2 text-gray-900 hover:text-amber-600 transition-colors">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider">Mail</span>
+            </a>
           </div>
         </div>
       </div>
