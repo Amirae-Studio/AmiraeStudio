@@ -18,25 +18,25 @@ const EXPERTISE = [
 
 export default function TeamExpertiseSection() {
   return (
-    <section id='team' className="bg-black text-white font-sans border-y-2 border-[#2AD5C6]/30 m-32">
+    <section id='team' className="bg-black text-white font-sans border-y-2 border-[#2AD5C6]/30 mx-4 sm:mx-8 md:mx-32 my-16 md:my-32">
       <div className="flex flex-col md:flex-row">
 
         {/* LEFT COLUMN: Content */}
-        <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-between border-b-2 md:border-b-0 md:border-r-2 border-[#2AD5C6]/30">
+        <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-16 flex flex-col justify-between border-b-2 md:border-b-0 md:border-r-2 border-[#2AD5C6]/30">
 
           <div>
             {/* Status line */}
-            <div className="font-mono text-xs md:text-sm flex items-center gap-3 uppercase tracking-wider mb-8">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#2AD5C6' }} />
+            <div className="font-mono text-xs md:text-sm flex items-center gap-3 uppercase tracking-wider mb-6 md:mb-8">
+              <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: '#2AD5C6' }} />
               THE PEOPLE BEHIND IT
             </div>
 
             {/* Title */}
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-none mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-none mb-6">
               Our Team &amp;<br />Expertise
             </h2>
 
-            <p className="text-lg md:text-xl opacity-90 max-w-md leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl opacity-90 max-w-md leading-relaxed">
               Industry veterans with{' '}
               <span className="font-semibold" style={{ color: '#2AD5C6' }}>10+ years</span>{' '}
               of hands-on experience in 3D modeling, software development, and modern coding practices — blending creative artistry with deep technical craft.
@@ -44,14 +44,14 @@ export default function TeamExpertiseSection() {
 
             <a
               href="#"
-              className="inline-flex items-center gap-2 mt-8 font-mono text-sm uppercase tracking-widest hover:opacity-70 transition-opacity"
+              className="inline-flex items-center gap-2 mt-6 md:mt-8 font-mono text-sm uppercase tracking-widest hover:opacity-70 transition-opacity"
             >
               Meet the team <span className="text-lg leading-none">↗</span>
             </a>
           </div>
 
           {/* Expertise blocks */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 mt-12 md:mt-16 border-2 border-[#2AD5C6]/30">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 mt-10 md:mt-16 border-2 border-[#2AD5C6]/30">
             {EXPERTISE.map((item, i) => {
               const Icon = item.icon;
               return (
@@ -72,7 +72,7 @@ export default function TeamExpertiseSection() {
         </div>
 
         {/* RIGHT COLUMN: Imagery */}
-        <div className="w-full md:w-1/2 h-[50vh] md:h-auto p-6 md:p-12 relative flex items-center justify-center">
+        <div className="w-full md:w-1/2 h-[350px] sm:h-[450px] md:h-auto p-6 md:p-12 relative flex items-center justify-center">
           <div className="relative w-full h-full max-h-[70vh] border-2 border-[#2AD5C6]/30 overflow-hidden">
 
             {/* Corner Accents */}
@@ -82,12 +82,12 @@ export default function TeamExpertiseSection() {
             <div className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 z-10 m-2" style={{ borderColor: '#2AD5C6' }} />
 
             {/* Faux UI Label */}
-            <div className="absolute top-4 right-4 z-10 font-mono text-xs px-3 py-1.5 flex items-center gap-2 bg-white text-black">
+            <div className="absolute top-4 right-4 z-10 font-mono text-xs px-3 py-1.5 flex items-center gap-2 bg-white text-black shadow-sm">
               <ImageIcon size={14} /> TEAM.JPG
             </div>
 
             {/* Faux headcount tag */}
-            <div className="absolute bottom-4 left-4 z-10 font-mono text-xs px-3 py-1.5 flex items-center gap-2" style={{ backgroundColor: '#2AD5C6', color: '#000' }}>
+            <div className="absolute bottom-4 left-4 z-10 font-mono text-xs px-3 py-1.5 flex items-center gap-2 shadow-sm" style={{ backgroundColor: '#2AD5C6', color: '#000' }}>
               <Users size={14} /> CROSS-DISCIPLINE
             </div>
 
