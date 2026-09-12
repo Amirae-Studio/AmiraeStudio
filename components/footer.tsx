@@ -14,7 +14,7 @@ const footerLinks = [
       { name: "FrameCity", href: "https://frame-city.vercel.app/" },
       { name: "VibeArt.in", href: "https://vibeart.in/" },
       { name: "Food Item Clickers", href: "#" },
-      { name: "Landmark Buildings", href: "#" },
+      { name: "Heritage Buildings", href: "#" },
     ],
   },
   {
