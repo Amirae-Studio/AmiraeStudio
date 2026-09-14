@@ -276,11 +276,37 @@ export default function ContactSection() {
               />
               <path d="M6 27L12 32L17 27" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <p className="font-hand text-2xl text-gray-800 -rotate-2">I'm available for new projects!</p>
+            <p className="font-hand text-2xl text-gray-800 -rotate-2">Available for custom commercial 3D &amp; CAD commissions</p>
+          </div>
+
+          {/* Legal Business Information Card */}
+          <div className="mt-8 bg-white/90 backdrop-blur-md border border-gray-300 p-6 rounded-2xl shadow-lg text-left font-mono text-xs text-gray-800 space-y-2">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-2">
+              <span className="font-bold text-black uppercase tracking-wider text-sm">AMIRAE STUDIO LLC</span>
+              <span className="text-[10px] bg-[#2AD5C6]/30 text-teal-950 font-bold px-2 py-0.5 rounded">Commercial Studio</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-[11px]">
+              <div>
+                <span className="text-gray-500 block">Direct Inquiries:</span>
+                <a href="mailto:arun@amirae.studio" className="font-bold text-teal-700 hover:underline">arun@amirae.studio</a>
+              </div>
+              <div>
+                <span className="text-gray-500 block">Commercial Scope:</span>
+                <span className="font-medium">3D CAD, Physical Printing, Digital Assets</span>
+              </div>
+              <div>
+                <span className="text-gray-500 block">Business Hours:</span>
+                <span className="font-medium">Mon - Fri: 9:00 AM – 6:00 PM EST</span>
+              </div>
+              <div>
+                <span className="text-gray-500 block">Commercial Services:</span>
+                <a href="/services" className="text-teal-700 font-bold hover:underline">View All Offerings →</a>
+              </div>
+            </div>
           </div>
 
           {/* 3D Floating Social Pill */}
-          <div className="relative inline-flex items-center gap-8 mt-8 bg-white/80 backdrop-blur-md border border-gray-200  px-8 py-5 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+          <div className="relative inline-flex items-center gap-8 mt-6 bg-white/80 backdrop-blur-md border border-gray-200  px-8 py-5 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
             {/* Copy Notification Toast */}
             <AnimatePresence>
               {copied && (

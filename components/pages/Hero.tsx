@@ -63,13 +63,13 @@ export default function HeroSection() {
       <div className="relative z-10 flex h-full flex-col items-center justify-between py-32 text-center">
         <div className="px-16">
           <h1 className="text-balance text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
-            Amiraé Studio
+            AMIRAE STUDIO LLC
             <br />
-           Creativity at Its Peak
+            <span className="text-2xl sm:text-3xl font-light text-muted-foreground">3D Design &amp; Digital Fabrication</span>
           </h1>
         </div>
-        <p className="max-w-xl px-6 text-muted-foreground">
-          Amiraé Studio is a 3D design house turning imagination into intricate, physical detail - from miniature cityscapes to hyper-real product art. We design, sculpt, and print worlds you can hold in your hands.
+        <p className="max-w-xl px-6 text-muted-foreground text-sm sm:text-base">
+          AMIRAE STUDIO LLC is a registered 3D design house transforming complex concepts into intricate, physical and digital detail — from miniature architectural cityscapes to production-grade product prototypes and interactive 3D web systems.
         </p>
       </div>
     </ImageStreamHero>
