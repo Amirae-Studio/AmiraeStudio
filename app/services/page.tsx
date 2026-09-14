@@ -201,9 +201,7 @@ export default function ServicesPage() {
       <section className="py-16 px-6 sm:px-8 md:px-16 bg-[#f4f1ea] border-b border-black/10">
         <div className="max-w-6xl mx-auto">
           <div className="mb-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-teal-700 font-bold block mb-2">
-              // Business Overview
-            </span>
+            
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
               Clear Business Description &amp; Scope
             </h2>
@@ -247,9 +245,7 @@ export default function ServicesPage() {
       <section className="py-20 px-6 sm:px-8 md:px-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs uppercase tracking-widest text-teal-700 font-bold block mb-2">
-              // Core Commercial Activities
-            </span>
+            
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">
               Itemized Commercial Services
             </h2>
@@ -353,9 +349,7 @@ export default function ServicesPage() {
       <section id="revenue-model" className="py-20 px-6 sm:px-8 md:px-16 bg-[#18181b] text-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#2AD5C6] font-bold block mb-2">
-              // Financial Structure &amp; Billing
-            </span>
+            
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
               Comprehensive Revenue Model
             </h2>
@@ -415,9 +409,7 @@ export default function ServicesPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
-              <span className="font-mono text-xs uppercase tracking-widest text-teal-700 font-bold block mb-2">
-                // Operational Footprint
-              </span>
+            
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6">
                 U.S. Operations &amp; Global Fulfillment
               </h2>
