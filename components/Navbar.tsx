@@ -6,8 +6,10 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Projects", href: "#projects" },
-    { name: "Team", href: "#team" }
+    { name: "Services", href: "/services" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Team & About", href: "/#team" },
+    { name: "FAQ", href: "/#faq" },
   ];
 
   return (
@@ -39,7 +41,7 @@ export function Navbar() {
         {/* Right: Action Button & Mobile Toggle */}
         <div className="flex items-center gap-4 z-50">
           <a 
-            href="#contact" 
+            href="/#contact" 
             className="hidden sm:inline-flex h-10 items-center justify-center rounded-2xl bg-[#21E1B5] px-6 font-medium text-black transition-all hover:scale-105 active:scale-95"
           >
             Contact Us
@@ -81,7 +83,7 @@ export function Navbar() {
             </a>
           ))}
           <a 
-            href="#contact" 
+            href="/#contact" 
             className="inline-flex h-12 w-full mt-2 items-center justify-center rounded-full bg-foreground px-6 text-base font-medium text-background transition-all active:scale-95 sm:hidden"
             onClick={() => setIsMobileMenuOpen(false)}
           >

@@ -33,20 +33,20 @@ export default function TeamExpertiseSection() {
 
             {/* Title */}
             <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-none mb-6">
-              Our Team &amp;<br />Expertise
+              About &amp;<br />Expertise
             </h2>
 
             <p className="text-base sm:text-lg md:text-xl opacity-90 max-w-md leading-relaxed">
-              Industry veterans with{' '}
+              <strong>AMIRAE STUDIO LLC</strong> brings together industry veterans with{' '}
               <span className="font-semibold" style={{ color: '#2AD5C6' }}>10+ years</span>{' '}
-              of hands-on experience in 3D modeling, software development, and modern coding practices — blending creative artistry with deep technical craft.
+              of hands-on experience in 3D modeling, product prototyping, physical additive fabrication, and modern web software engineering.
             </p>
 
             <a
-              href="#"
-              className="inline-flex items-center gap-2 mt-6 md:mt-8 font-mono text-sm uppercase tracking-widest hover:opacity-70 transition-opacity"
+              href="/services"
+              className="inline-flex items-center gap-2 mt-6 md:mt-8 font-mono text-sm uppercase tracking-widest text-[#2AD5C6] hover:underline"
             >
-              Meet the team <span className="text-lg leading-none">↗</span>
+              Explore Commercial Services <span className="text-lg leading-none">→</span>
             </a>
           </div>
 

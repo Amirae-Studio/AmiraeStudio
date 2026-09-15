@@ -6,23 +6,35 @@ import { motion, useInView, Variants, AnimatePresence } from "framer-motion";
 import { GradientComponent } from "./GradientComponent";
 import GlassPaneBG from "./GlassPlane";
 
-// --- DATA FOR EASY UPDATES (Amiraé Studio) ---
+// --- DATA FOR EASY UPDATES (AMIRAE STUDIO LLC) ---
 const footerLinks = [
   {
-    title: "Innovations",
+    title: "Services & Capabilities",
     links: [
-      { name: "FrameCity", href: "https://frame-city.vercel.app/" },
-      { name: "VibeArt.in", href: "https://vibeart.in/" },
-      { name: "Food Item Clickers", href: "#" },
-      { name: "Landmark Buildings", href: "#" },
+      { name: "All Commercial Services", href: "/services" },
+      { name: "3D Modeling & Assets", href: "/services#3d-modeling" },
+      { name: "Product Prototyping", href: "/services#product-design" },
+      { name: "3D Printing & Fabrication", href: "/services#3d-printing" },
+      { name: "Architectural & Heritage", href: "/services#architectural" },
+      { name: "Interactive 3D Engineering", href: "/services#digital-ecosystems" },
     ],
   },
   {
-    title: "Studio",
+    title: "Featured Works",
     links: [
-      { name: "About Us", href: "#team" },
-      { name: "Contact", href: "#contact" },
-      { name: "Makers World", href: "https://makerworld.com/en/crowdfunding/313-framecity-high-detailed-cities-in-frames" },
+      { name: "FrameCity Collection", href: "https://frame-city.vercel.app/" },
+      { name: "MakerWorld Crowdfunding", href: "https://makerworld.com/en/crowdfunding/313-framecity-high-detailed-cities-in-frames" },
+      { name: "Maze Foundry Engine", href: "https://maze-foundry.vercel.app/" },
+      { name: "VibeArt.in", href: "https://vibeart.in/" },
+    ],
+  },
+  {
+    title: "Company & Governance",
+    links: [
+      { name: "About AMIRAE STUDIO LLC", href: "/#team" },
+      { name: "Revenue & Pricing Model", href: "/services#revenue-model" },
+      { name: "U.S. & Global Operations", href: "/services#us-operations" },
+      { name: "Client Inquiries / Contact", href: "/#contact" },
     ],
   },
 ];
@@ -81,163 +93,174 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="relative mt-20 overflow-hidden text-gray-900 lg:mt-32"
+      className="relative mt-20 overflow-hidden text-gray-900 lg:mt-32 border-t border-black/10"
       style={{ backgroundColor: "#2AD5C6" }}
     >
-      
-        {/* Background Ambient Gradient positioned cleanly behind content */}
-        <div className="absolute pointer-events-none left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 overflow-hidden">
+      {/* Background Ambient Gradient positioned cleanly behind content */}
+      <div className="absolute pointer-events-none left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 overflow-hidden">
+        <motion.div
+          initial={{ y: 60, opacity: 0, scale: 0.85 }}
+          animate={isInView ? { y: 0, opacity: 0.6, scale: 1 } : {}}
+          transition={{ duration: 2, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+        >
+          <GradientComponent colors={gradientColors} sizeVW={120} isAnimated={true} />
+        </motion.div>
+      </div>
+
+      <div className="relative z-20 mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+          {/* ── Left Column: Legal Brand Identity & Description ── */}
           <motion.div
-            initial={{ y: 60, opacity: 0, scale: 0.85 }}
-            animate={isInView ? { y: 0, opacity: 0.6, scale: 1 } : {}}
-            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
-          >
-            <GradientComponent colors={gradientColors} sizeVW={120} isAnimated={true} />
-          </motion.div>
-        </div>
-
-        <div className="relative z-20 mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
-            {/* ── Left Column: Logo + CTA ── */}
-            <motion.div
-              className="flex flex-col items-start gap-4"
-              variants={fadeUpVariant}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              custom={0}
-            >
-              <div className="relative flex flex-col items-start px-2 py-1">
-                <div className="flex items-center space-x-2">
-                  <motion.img
-                    src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/brand/amirae_studio_logo-removebg-preview.webp"
-                    alt="Amiraé Studio Logo"
-                    className="w-[80px] h-[80px] object-contain"
-                    initial={{ opacity: 0, rotate: -15, scale: 0.7 }}
-                    animate={isInView ? { opacity: 1, rotate: 0, scale: 1 } : {}}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                  />
-                 
-                </div>
-                <motion.span
-                  className="mt-1 text-xs tracking-widest text-gray-900 font-semibold"
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                >
-                  when the magic happens
-                </motion.span>
-              </div>
-
-              <motion.p
-                className="max-w-xs pt-2 text-gray-900 text-sm font-medium leading-relaxed"
-                variants={fadeUpVariant}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-                custom={0.2}
-              >
-                Engineering high-precision physical art, 3D architectural models, and next-gen AI media canvas engines.
-              </motion.p>
-
-              <motion.a
-                href="#contact"
-                variants={fadeUpVariant}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-                custom={0.3}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative mt-4 flex w-full items-center justify-center overflow-hidden rounded-[13px] border-2 border-black/30 bg-black/10 p-4 px-12 backdrop-blur-xl sm:w-auto"
-              >
-                <span className="relative z-10 text-xs font-bold leading-[17px] tracking-widest text-black">
-                  GET IN TOUCH
-                </span>
-              </motion.a>
-            </motion.div>
-
-            {/* ── Right Column: Links ── */}
-            <div className="grid grid-cols-2 gap-8 lg:col-span-2 lg:pl-16">
-              {footerLinks.map((column, colIdx) => (
-                <motion.div
-                  key={column.title}
-                  variants={fadeUpVariant}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
-                  custom={0.15 + colIdx * 0.12}
-                >
-                  <h3 className="text-xs font-black uppercase tracking-wider text-black">
-                    {column.title}
-                  </h3>
-                  <ul className="mt-4 space-y-3">
-                    {column.links.map((link) => (
-                      <li key={link.name}>
-                        <a
-                          href={link.href}
-                          target={link.href.startsWith("http") ? "_blank" : "_self"}
-                          rel={link.href.startsWith("http") ? "noopener noreferrer" : ""}
-                          className="text-xs font-semibold text-gray-900 transition-colors duration-200 hover:text-black hover:underline"
-                        >
-                          {link.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* ── Bottom Bar ── */}
-          <motion.div
-            className="relative z-20 mt-16 flex flex-col items-center justify-between gap-6 border-t border-black/20 pt-8 sm:flex-row"
+            className="flex flex-col items-start gap-4 lg:col-span-4"
             variants={fadeUpVariant}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            custom={0.5}
+            custom={0}
           >
-            <p className="text-center text-xs font-semibold text-gray-900 sm:text-left">
-              &copy; {new Date().getFullYear()} Amiraé Studio. All Rights Reserved.
-            </p>
-            <div className="relative flex flex-wrap items-center justify-center gap-3">
-              {/* Copy Notification Toast */}
-              <AnimatePresence>
-                {copied && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                    animate={{ opacity: 1, y: -8, scale: 1 }}
-                    exit={{ opacity: 0, y: 4, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute -top-10 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap rounded-md bg-black px-2.5 py-1 text-[11px] font-bold text-white shadow-lg pointer-events-none"
-                  >
-                    Email copied!
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {socialLinks.map((social) => {
-                const emailMatch = social.href.match(/^mailto:(.+)$/);
-                const emailAddress = emailMatch ? emailMatch[1] : "";
-
-                return (
-                  <motion.a
-                    key={social.name}
-                    href={social.href}
-                    onClick={(e) => handleEmailClick(e, social.name, emailAddress)}
-                    target={social.name === "Gmail" ? "_self" : "_blank"}
-                    rel={social.name === "Gmail" ? "" : "noopener noreferrer"}
-                    aria-label={social.name}
-                    whileHover={{ y: -3, scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-black/15 bg-white/50 text-xs font-bold text-black transition-all hover:bg-black hover:text-white"
-                  >
-                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                      <path d={social.svgPath} />
-                    </svg>
-                    <span>{social.name}</span>
-                  </motion.a>
-                );
-              })}
+            <div className="relative flex flex-col items-start px-2 py-1">
+              <div className="flex items-center space-x-3">
+                <motion.img
+                  src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/brand/amirae_studio_logo-removebg-preview.webp"
+                  alt="AMIRAE STUDIO LLC"
+                  className="w-[72px] h-[72px] object-contain drop-shadow-sm"
+                  initial={{ opacity: 0, rotate: -15, scale: 0.7 }}
+                  animate={isInView ? { opacity: 1, rotate: 0, scale: 1 } : {}}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                />
+                <div>
+                  <h3 className="text-base font-black tracking-tight text-black">AMIRAE STUDIO LLC</h3>
+                  <span className="text-[11px] font-mono font-bold tracking-widest text-gray-800 uppercase block">
+                    3D Design &amp; Digital Engineering
+                  </span>
+                </div>
+              </div>
             </div>
+
+            <motion.p
+              className="max-w-sm pt-2 text-gray-900 text-xs sm:text-sm font-medium leading-relaxed"
+              variants={fadeUpVariant}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              custom={0.2}
+            >
+              <strong>AMIRAE STUDIO LLC</strong> is a specialized 3D modeling and digital fabrication studio delivering bespoke 3D CAD assets, rapid product prototypes, precision architectural miniatures, and interactive WebGL experiences for global brands and independent creators.
+            </motion.p>
+
+            {/* Legal Entity & Address Box */}
+            <div className="mt-3 w-full rounded-xl bg-black/10 p-3.5 border border-black/15 text-[11px] font-mono text-gray-900 space-y-1">
+              <div className="font-bold text-black uppercase tracking-wider">Legal Entity Identification</div>
+              <div><span className="font-semibold">Entity:</span> AMIRAE STUDIO LLC</div>
+              <div><span className="font-semibold">Inquiries:</span> arun@amirae.studio</div>
+              <div><span className="font-semibold">Operations:</span> Principal Operating &amp; Digital Fulfillment Studio</div>
+            </div>
+
+            <motion.a
+              href="/#contact"
+              variants={fadeUpVariant}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              custom={0.3}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="relative mt-2 flex w-full items-center justify-center overflow-hidden rounded-[12px] border-2 border-black/30 bg-black/10 p-3.5 px-8 backdrop-blur-xl sm:w-auto"
+            >
+              <span className="relative z-10 text-xs font-bold leading-[17px] tracking-widest text-black uppercase">
+                Request Commercial Quote
+              </span>
+            </motion.a>
           </motion.div>
+
+          {/* ── Right Columns: Categorized Navigation Links ── */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:col-span-8 lg:pl-8">
+            {footerLinks.map((column, colIdx) => (
+              <motion.div
+                key={column.title}
+                variants={fadeUpVariant}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                custom={0.15 + colIdx * 0.12}
+              >
+                <h3 className="text-xs font-black uppercase tracking-wider text-black border-b border-black/20 pb-2">
+                  {column.title}
+                </h3>
+                <ul className="mt-4 space-y-2.5">
+                  {column.links.map((link) => (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith("http") ? "_blank" : "_self"}
+                        rel={link.href.startsWith("http") ? "noopener noreferrer" : ""}
+                        className="text-xs font-semibold text-gray-900 transition-colors duration-200 hover:text-black hover:underline"
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        {/* ── Bottom Bar ── */}
+        <motion.div
+          className="relative z-20 mt-12 flex flex-col items-center justify-between gap-6 border-t border-black/20 pt-8 sm:flex-row"
+          variants={fadeUpVariant}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          custom={0.5}
+        >
+          <div className="text-center sm:text-left space-y-1">
+            <p className="text-xs font-bold text-gray-900">
+              &copy; {new Date().getFullYear()} AMIRAE STUDIO LLC. All Rights Reserved.
+            </p>
+            <p className="text-[11px] text-gray-800 font-medium">
+              Commercial 3D Modeling • Rapid Prototyping • Digital Assets • Physical Print Solutions
+            </p>
+          </div>
+
+          <div className="relative flex flex-wrap items-center justify-center gap-3">
+            {/* Copy Notification Toast */}
+            <AnimatePresence>
+              {copied && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                  animate={{ opacity: 1, y: -8, scale: 1 }}
+                  exit={{ opacity: 0, y: 4, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute -top-10 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap rounded-md bg-black px-2.5 py-1 text-[11px] font-bold text-white shadow-lg pointer-events-none"
+                >
+                  Email copied!
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {socialLinks.map((social) => {
+              const emailMatch = social.href.match(/^mailto:(.+)$/);
+              const emailAddress = emailMatch ? emailMatch[1] : "";
+
+              return (
+                <motion.a
+                  key={social.name}
+                  href={social.href}
+                  onClick={(e) => handleEmailClick(e, social.name, emailAddress)}
+                  target={social.name === "Gmail" ? "_self" : "_blank"}
+                  rel={social.name === "Gmail" ? "" : "noopener noreferrer"}
+                  aria-label={social.name}
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-black/15 bg-white/50 text-xs font-bold text-black transition-all hover:bg-black hover:text-white"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d={social.svgPath} />
+                  </svg>
+                  <span>{social.name}</span>
+                </motion.a>
+              );
+            })}
+          </div>
+        </motion.div>
+      </div>
     </footer>
   );
 };
