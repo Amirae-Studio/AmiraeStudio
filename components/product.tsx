@@ -5,19 +5,19 @@ const PROJECTS = [
     id: '01',
     title: 'FrameCity',
     date: 'AUG 6, 2026',
-    desc: 'Hand-modelled city skylines, sculpted to fit inside a picture frame — and print without a single support. Earned $1,700+ through crowdfunding on MakerWorld.',
+    desc: 'A curated collection of hand-modeled cities, transformed into refined, customizable 3D art model. Every city in our library includes its most iconic districts, skylines, and landmarks, carefully hand-modeled for maximum print quality and visual impact.',
     tags: ['3D PRINTING', 'MINIATURES'],
     bgColor: 'bg-[#4db8ff]', // Cyan
     textColor: 'text-black',
     borderColor: 'border-black',
-    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&q=80&w=1200',
+    image: '/framecity.png',
     link: 'https://frame-city.vercel.app/',
   },
   {
     id: '02',
     title: 'Maze Foundry',
     date: 'JUN 14, 2026',
-    desc: 'Used for creating mazes in different sizes, dimensions and shapes as per user requirement.',
+    desc: 'Turns the simple joy of a marble maze into a world of endless possibilities. Design your own path by combining beautifully crafted modular pieces. Shape every twist, turn, elevation, and obstacle exactly the way you envision it.Preview your creation in 3D and export it as a ready-to-print masterpiece.',
     tags: ['3D PRINTING', 'MINIATURES'],
     bgColor: 'bg-[#1a1a1a]', // Black
     textColor: 'text-white',
@@ -29,7 +29,7 @@ const PROJECTS = [
     id: '03',
     title: 'Food Clicks',
     date: 'UpComing',
-    desc: 'Hyper-detailed miniature 3D models of food items tailored for interactive clickers and tabletop displays.',
+    desc: 'A playful collection of tactile fidget toys inspired by the foods we all love.From fresh fruits and vegetables to all foods, ice-creams, cakes, and desserts, each familiar favorite is reimagined as a charming little creation.Thoughtfully designed to bring a touch of fun, delight, and satisfying interaction to every click.',
     tags: ['PRODUCT ART', 'TABLETOP'],
     bgColor: 'bg-[#f0c239]', // Yellow
     textColor: 'text-black',
@@ -41,14 +41,26 @@ const PROJECTS = [
     id: '04',
     title: 'Heritage Buildings',
     date: 'UpComing',
-    desc: 'Intricately detailed 3D printable models of standalone historic and modern architectural landmarks from around the globe.',
+    desc: 'A refined collection of monuments, iconic buildings, celebrated structures, and timeless towers, each thoughtfully recreated as a detailed 3D-printable model.Each model is meticulously hand-crafted by skilled 3D artists, capturing the proportions, form, silhouettes, façades, and distinctive details of each landmark.',
     tags: ['ARCHITECTURE', '3D MODELS'],
-    bgColor: 'bg-[#e6005c]', // Pink
+    bgColor: 'bg-[#4db8ff]', // Cyan
     textColor: 'text-white',
     borderColor: 'border-white/20',
     image: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=80&w=1200',
     link: '#',
-  }
+  },
+  {
+    id: '05',
+    title: 'AQUATIC FLEXI TOYS',
+    date: 'UpComing',
+    desc: 'Dive into a world of underwater fun with our collection of adorable and playful flexi toys!Meet happy little fish, cute crabs, friendly turtles, playful dolphins, and more lovable and colorful sea creatures, all designed for little hands to play, twist, wiggle, and explore.',
+    tags: ['3D PRINTING', 'MINIATURES'],
+    bgColor: 'bg-[#e6005c]', // Pink
+    textColor: 'text-white',
+    borderColor: 'border-white/20',
+    image: '/aqua.png',
+    link: '#',
+  },
 ];
 
 export default function ProductSection() {
