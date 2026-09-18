@@ -3,9 +3,9 @@ import FaqSection from "@/components/Faq";
 import FooterSection from "@/components/footer";
 import { Navbar } from "@/components/Navbar";
 import HeroSection from "@/components/pages/Hero";
-
 import ProductSection from "@/components/product";
 import TeamSection from "@/components/team";
+import RequestQuoteSection from "@/components/RequestQuote";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -36,18 +36,17 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen bg-white font-sans">
       <Navbar />
       <HeroSection />
-      <ProductSection/>
-      <TeamSection/>
+      <ProductSection />
+      <TeamSection />
       <FaqSection />
-      {/* <ImageSlideshow/> */}
-      <ContactSection/>
+      <RequestQuoteSection />
+      <ContactSection />
       <FooterSection />
     </div>
-  )
+  );
 }

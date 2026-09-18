@@ -24,14 +24,14 @@ const footerLinks = [
     links: [
       { name: "FrameCity Collection", href: "https://frame-city.vercel.app/" },
       { name: "MakerWorld Crowdfunding", href: "https://makerworld.com/en/crowdfunding/313-framecity-high-detailed-cities-in-frames" },
-      { name: "Maze Foundry Engine", href: "https://maze-foundry.vercel.app/" },
-      { name: "VibeArt.in", href: "https://vibeart.in/" },
+      { name: "Maze Foundry Engine", href: "https://maze-foundry.vercel.app/" }
     ],
   },
   {
     title: "Company & Governance",
     links: [
-      { name: "About AMIRAE STUDIO LLC", href: "/#team" },
+      { name: "About AMIRAE STUDIO LLC", href: "/about" },
+      { name: "Request a Quote", href: "/#quote" },
       { name: "Revenue & Pricing Model", href: "/services#revenue-model" },
       { name: "U.S. & Global Operations", href: "/services#us-operations" },
       { name: "Client Inquiries / Contact", href: "/#contact" },
@@ -147,24 +147,26 @@ const Footer = () => {
             </motion.p>
 
             {/* Legal Entity & Address Box */}
-            <div className="mt-3 w-full rounded-xl bg-black/10 p-3.5 border border-black/15 text-[11px] font-mono text-gray-900 space-y-1">
+            <div className="mt-3 w-full rounded-2xl bg-black/10 p-4 border border-black/15 text-[11px] font-mono text-gray-900 space-y-1">
               <div className="font-bold text-black uppercase tracking-wider">Legal Entity Identification</div>
               <div><span className="font-semibold">Entity:</span> AMIRAE STUDIO LLC</div>
+              <div><span className="font-semibold">phone:</span>8951478989</div>
               <div><span className="font-semibold">Inquiries:</span> arun@amirae.studio</div>
+              
               <div><span className="font-semibold">Operations:</span> Principal Operating &amp; Digital Fulfillment Studio</div>
             </div>
 
             <motion.a
-              href="/#contact"
+              href="/#quote"
               variants={fadeUpVariant}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               custom={0.3}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="relative mt-2 flex w-full items-center justify-center overflow-hidden rounded-[12px] border-2 border-black/30 bg-black/10 p-3.5 px-8 backdrop-blur-xl sm:w-auto"
+              className="relative mt-2 flex w-full items-center justify-center overflow-hidden rounded-2xl bg-black text-white p-3.5 px-8 sm:w-auto shadow-md"
             >
-              <span className="relative z-10 text-xs font-bold leading-[17px] tracking-widest text-black uppercase">
+              <span className="relative z-10 text-xs font-bold font-mono leading-[17px] tracking-widest uppercase">
                 Request Commercial Quote
               </span>
             </motion.a>
@@ -228,7 +230,7 @@ const Footer = () => {
                   animate={{ opacity: 1, y: -8, scale: 1 }}
                   exit={{ opacity: 0, y: 4, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute -top-10 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap rounded-md bg-black px-2.5 py-1 text-[11px] font-bold text-white shadow-lg pointer-events-none"
+                  className="absolute -top-10 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap rounded-lg bg-black px-2.5 py-1 text-[11px] font-bold text-white shadow-lg pointer-events-none"
                 >
                   Email copied!
                 </motion.div>
@@ -249,7 +251,7 @@ const Footer = () => {
                   aria-label={social.name}
                   whileHover={{ y: -3, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-black/15 bg-white/50 text-xs font-bold text-black transition-all hover:bg-black hover:text-white"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-black/15 bg-white/60 text-xs font-bold font-mono text-black transition-all hover:bg-black hover:text-white shadow-xs"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d={social.svgPath} />

@@ -4,7 +4,7 @@ const PROJECTS = [
   {
     id: '01',
     title: 'FrameCity',
-    date: 'AUG 6, 2026',
+    date: 'AUG 1, 2026',
     desc: 'A curated collection of hand-modeled cities, transformed into refined, customizable 3D art model. Every city in our library includes its most iconic districts, skylines, and landmarks, carefully hand-modeled for maximum print quality and visual impact.',
     tags: ['3D PRINTING', 'MINIATURES'],
     bgColor: 'bg-[#4db8ff]', // Cyan
@@ -27,7 +27,7 @@ const PROJECTS = [
   },
   {
     id: '03',
-    title: 'Food Clicks',
+    title: 'Food Clickers',
     date: 'UpComing',
     desc: 'A playful collection of tactile fidget toys inspired by the foods we all love.From fresh fruits and vegetables to all foods, ice-creams, cakes, and desserts, each familiar favorite is reimagined as a charming little creation.Thoughtfully designed to bring a touch of fun, delight, and satisfying interaction to every click.',
     tags: ['PRODUCT ART', 'TABLETOP'],
@@ -51,14 +51,14 @@ const PROJECTS = [
   },
   {
     id: '05',
-    title: 'AQUATIC FLEXI TOYS',
+    title: 'Aquatic Flexi Toys',
     date: 'UpComing',
     desc: 'Dive into a world of underwater fun with our collection of adorable and playful flexi toys!Meet happy little fish, cute crabs, friendly turtles, playful dolphins, and more lovable and colorful sea creatures, all designed for little hands to play, twist, wiggle, and explore.',
     tags: ['3D PRINTING', 'MINIATURES'],
     bgColor: 'bg-[#e6005c]', // Pink
     textColor: 'text-white',
     borderColor: 'border-white/20',
-    image: '/aqua.png',
+    image: '/aqua.jpg',
     link: '#',
   },
 ];
@@ -75,11 +75,10 @@ export default function ProductSection() {
           {/* TAB LAYER */}
           <div className="absolute top-0 left-0 w-full h-10 md:h-16 pointer-events-none z-20">
             <div 
-              className={`absolute bottom-[-2px] h-full pointer-events-auto flex items-center px-4 md:px-8 gap-2 font-mono text-xs md:text-sm font-bold tracking-widest ${project.bgColor} ${project.textColor}`}
+              className={`absolute bottom-[-2px] h-full pointer-events-auto flex items-center px-4 md:px-8 gap-2 font-mono text-xs md:text-sm font-bold tracking-widest rounded-t-2xl ${project.bgColor} ${project.textColor}`}
               style={{
                 left: `max(0px, calc(${index} * 8vw))` /* Scaled down offset for mobile, expands on desktop */,
                 minWidth: '140px',
-                clipPath: 'polygon(1rem 0, calc(100% - 1rem) 0, 100% 100%, 0 100%)'
               }}
             >
               <Folder size={14} className="opacity-80" /> PROJECT {project.id}
@@ -87,7 +86,7 @@ export default function ProductSection() {
           </div>
 
           {/* BODY LAYER */}
-          <div className={`flex-1 w-full ${project.bgColor} ${project.textColor} ${project.borderColor} overflow-hidden flex flex-col md:flex-row relative z-10 border-2`}>
+          <div className={`flex-1 w-full ${project.bgColor} ${project.textColor} ${project.borderColor} overflow-hidden rounded-3xl rounded-tl-none flex flex-col md:flex-row relative z-10 border-2 shadow-2xl`}>
             
             {/* Left Column: Project Info */}
             <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-16 flex flex-col justify-between">
@@ -122,7 +121,7 @@ export default function ProductSection() {
                 {project.tags.map(tag => (
                   <span 
                     key={tag} 
-                    className={`font-mono text-xs md:text-sm px-3 py-1.5 font-bold ${
+                    className={`font-mono text-xs md:text-sm px-3.5 py-1.5 font-bold rounded-full ${
                       project.textColor === 'text-white' ? 'bg-white text-black' : 'bg-black text-white'
                     }`}
                   >
@@ -134,18 +133,7 @@ export default function ProductSection() {
 
             {/* Right Column: Imagery */}
             <div className={`w-full md:w-1/2 h-[350px] sm:h-[400px] md:h-auto border-t-2 md:border-t-0 md:border-l-2 ${project.borderColor} p-4 sm:p-6 md:p-12 relative flex items-center justify-center`}>
-              <div className={`relative w-full h-full max-h-[70vh] border-2 ${project.borderColor} overflow-hidden`}>
-                <div className={`absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 ${project.borderColor} z-10 m-2`} />
-                <div className={`absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 ${project.borderColor} z-10 m-2`} />
-                <div className={`absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 ${project.borderColor} z-10 m-2`} />
-                <div className={`absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 ${project.borderColor} z-10 m-2`} />
-
-                <div className={`absolute top-4 right-4 z-10 font-mono text-xs px-3 py-1.5 flex items-center gap-2 shadow-sm ${
-                  project.textColor === 'text-white' ? 'bg-white text-black' : 'bg-black text-white'
-                }`}>
-                  <ImageIcon size={14} /> IMAGE.JPG
-                </div>
-
+              <div className={`relative w-full h-full max-h-[70vh] rounded-2xl border-2 ${project.borderColor} overflow-hidden shadow-inner`}>
                 <img 
                   src={project.image} 
                   alt={project.title}
