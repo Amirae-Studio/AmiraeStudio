@@ -4,7 +4,6 @@ import Footer from "@/components/footer";
 import { 
   Boxes, 
   Cpu, 
-  Layers, 
   Landmark, 
   Code2, 
   CheckCircle2, 
@@ -12,10 +11,9 @@ import {
   Building2, 
   Globe2, 
   ShieldCheck, 
-  ArrowRight,
-  Download,
-  Printer,
-  Sparkles
+  ArrowRight, 
+  Download, 
+  Printer 
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -157,7 +155,7 @@ const REVENUE_STREAMS = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-[#faf9f5] text-gray-900 font-sans">
+    <div className="min-h-screen bg-[#faf9f5] text-gray-900 font-[family-name:var(--font-your-hero-font)]">
       <Navbar />
 
       {/* Hero Section */}
@@ -165,7 +163,6 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
         
         <div className="max-w-6xl mx-auto relative z-10">
-
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight">
             Commercial Services &amp;<br />
             <span className="text-teal-600">Business Capabilities</span>
@@ -176,20 +173,20 @@ export default function ServicesPage() {
           </p>
 
           {/* Quick Overview Badges */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-gray-200">
-            <div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-gray-200">
+            <div className="p-4 rounded-2xl bg-gray-50 border border-gray-200/70 shadow-xs">
               <span className="text-xs font-mono uppercase text-gray-500 block">Legal Entity</span>
               <span className="text-sm font-bold text-gray-900">AMIRAE STUDIO LLC</span>
             </div>
-            <div>
+            <div className="p-4 rounded-2xl bg-gray-50 border border-gray-200/70 shadow-xs">
               <span className="text-xs font-mono uppercase text-gray-500 block">Core Disciplines</span>
               <span className="text-sm font-bold text-gray-900">3D Design &amp; Fabrication</span>
             </div>
-            <div>
+            <div className="p-4 rounded-2xl bg-gray-50 border border-gray-200/70 shadow-xs">
               <span className="text-xs font-mono uppercase text-gray-500 block">Client Base</span>
               <span className="text-sm font-bold text-gray-900">U.S. &amp; Worldwide</span>
             </div>
-            <div>
+            <div className="p-4 rounded-2xl bg-gray-50 border border-gray-200/70 shadow-xs">
               <span className="text-xs font-mono uppercase text-gray-500 block">Fulfillment</span>
               <span className="text-sm font-bold text-gray-900">Digital &amp; Physical</span>
             </div>
@@ -201,15 +198,14 @@ export default function ServicesPage() {
       <section className="py-16 px-6 sm:px-8 md:px-16 bg-[#f4f1ea] border-b border-black/10">
         <div className="max-w-6xl mx-auto">
           <div className="mb-10">
-            
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
               Clear Business Description &amp; Scope
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-black/10 shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 mb-4 font-mono font-bold text-sm">
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-black/10 shadow-sm">
+              <div className="w-10 h-10 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-700 mb-4 font-mono font-bold text-sm">
                 01
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">What We Do</h3>
@@ -218,8 +214,8 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-black/10 shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 mb-4 font-mono font-bold text-sm">
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-black/10 shadow-sm">
+              <div className="w-10 h-10 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-700 mb-4 font-mono font-bold text-sm">
                 02
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Who We Serve</h3>
@@ -228,8 +224,8 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-black/10 shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 mb-4 font-mono font-bold text-sm">
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-black/10 shadow-sm">
+              <div className="w-10 h-10 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-700 mb-4 font-mono font-bold text-sm">
                 03
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">What We Deliver</h3>
@@ -242,10 +238,9 @@ export default function ServicesPage() {
       </section>
 
       {/* Itemized Commercial Services */}
-      <section className="py-20 px-6 sm:px-8 md:px-16">
+      <section className="py-20 px-6 sm:px-8 md:px-16 border-b border-black/10 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">
               Itemized Commercial Services
             </h2>
@@ -261,23 +256,23 @@ export default function ServicesPage() {
                 <div 
                   key={service.id} 
                   id={service.id}
-                  className="bg-white rounded-3xl border border-black/10 p-6 sm:p-10 shadow-md hover:shadow-lg transition-all"
+                  className="bg-[#faf9f5] rounded-3xl border border-black/10 p-6 sm:p-10 shadow-md hover:shadow-lg transition-all"
                 >
-                  <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-gray-100">
+                  <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-gray-200">
                     <div className="flex items-start gap-4">
                       <div 
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-sm"
-                        style={{ backgroundColor: `${service.color}20`, color: service.color }}
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-xs"
+                        style={{ backgroundColor: `${service.color}25`, color: service.color }}
                       >
                         <Icon size={28} />
                       </div>
                       <div>
-                        <div className="flex flex-wrap items-center gap-3 mb-1">
-                          <span className="font-mono text-xs font-bold px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">
+                        <div className="flex flex-wrap items-center gap-3 mb-1.5">
+                          <span className="font-mono text-xs font-bold px-3 py-0.5 rounded-full bg-gray-200 text-gray-800">
                             SERVICE {service.number}
                           </span>
                           <span 
-                            className="font-mono text-xs font-bold px-2.5 py-0.5 rounded-full text-black"
+                            className="font-mono text-xs font-bold px-3 py-0.5 rounded-full text-black"
                             style={{ backgroundColor: `${service.color}40` }}
                           >
                             {service.badge}
@@ -293,8 +288,8 @@ export default function ServicesPage() {
                     </div>
 
                     <a 
-                      href="/#contact"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-gray-800 transition-all shrink-0"
+                      href="/#quote"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-gray-800 transition-all shrink-0 hover:scale-105"
                     >
                       Inquire About This Service <ArrowRight size={14} />
                     </a>
@@ -306,8 +301,8 @@ export default function ServicesPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
                     {/* Deliverables */}
-                    <div className="bg-gray-50 p-5 rounded-2xl border border-gray-200/60">
-                      <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-gray-700 mb-3 flex items-center gap-2">
+                    <div className="bg-white p-6 rounded-2xl border border-gray-200/80">
+                      <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-gray-800 mb-3 flex items-center gap-2">
                         <CheckCircle2 size={14} className="text-teal-600" /> Commercial Deliverables
                       </h4>
                       <ul className="space-y-2">
@@ -321,18 +316,18 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Operational & Pricing Details */}
-                    <div className="bg-gray-50 p-5 rounded-2xl border border-gray-200/60 flex flex-col justify-between">
+                    <div className="bg-white p-6 rounded-2xl border border-gray-200/80 flex flex-col justify-between">
                       <div className="space-y-3 text-xs sm:text-sm">
                         <div>
-                          <span className="font-mono uppercase text-gray-500 block text-[11px]">Target Client Base:</span>
+                          <span className="font-mono uppercase text-gray-500 block text-[11px] font-bold">Target Client Base:</span>
                           <span className="font-medium text-gray-800">{service.clients}</span>
                         </div>
                         <div>
-                          <span className="font-mono uppercase text-gray-500 block text-[11px]">Revenue Model:</span>
+                          <span className="font-mono uppercase text-gray-500 block text-[11px] font-bold">Revenue Model:</span>
                           <span className="font-medium text-gray-800">{service.revenueStream}</span>
                         </div>
                         <div>
-                          <span className="font-mono uppercase text-gray-500 block text-[11px]">Standard Delivery Timeline:</span>
+                          <span className="font-mono uppercase text-gray-500 block text-[11px] font-bold">Standard Delivery Timeline:</span>
                           <span className="font-medium text-gray-800">{service.timeline}</span>
                         </div>
                       </div>
@@ -346,10 +341,9 @@ export default function ServicesPage() {
       </section>
 
       {/* Revenue Model Breakdown */}
-      <section id="revenue-model" className="py-20 px-6 sm:px-8 md:px-16 bg-[#18181b] text-white">
+      <section id="revenue-model" className="py-20 px-6 sm:px-8 md:px-16 bg-zinc-950 text-white border-b border-zinc-800">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
               Comprehensive Revenue Model
             </h2>
@@ -364,13 +358,13 @@ export default function ServicesPage() {
               return (
                 <div 
                   key={i}
-                  className="bg-zinc-900 border border-zinc-800 p-6 sm:p-8 rounded-2xl relative overflow-hidden"
+                  className="bg-zinc-900 border border-zinc-800 p-7 sm:p-8 rounded-3xl relative overflow-hidden shadow-md"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#2AD5C6]/10 text-[#2AD5C6] flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2AD5C6]/10 text-[#2AD5C6] flex items-center justify-center">
                       <Icon size={24} />
                     </div>
-                    <span className="font-mono text-xs px-3 py-1 rounded-full bg-zinc-800 text-[#2AD5C6] border border-zinc-700">
+                    <span className="font-mono text-xs px-3 py-1 rounded-full bg-zinc-800 text-[#2AD5C6] border border-zinc-700 font-bold">
                       {rev.pct}
                     </span>
                   </div>
@@ -382,7 +376,7 @@ export default function ServicesPage() {
           </div>
 
           {/* Payment & Invoicing Terms */}
-          <div className="mt-12 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-6 sm:p-8">
+          <div className="mt-10 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-7 sm:p-8">
             <h4 className="text-sm font-mono uppercase tracking-widest text-[#2AD5C6] font-bold mb-4">
               Commercial Payment Terms &amp; Settlement
             </h4>
@@ -409,7 +403,6 @@ export default function ServicesPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
-            
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6">
                 U.S. Operations &amp; Global Fulfillment
               </h2>
@@ -420,15 +413,15 @@ export default function ServicesPage() {
                 <p>
                   Through platforms such as <strong>MakerWorld</strong> (where our project <em>FrameCity</em> earned over $1,700+ from global and U.S. backers) and our direct studio commissions, we maintain active digital delivery systems and international shipping workflows.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                  <div className="flex items-start gap-3 bg-white p-4 rounded-xl border border-black/10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <div className="flex items-start gap-3 bg-white p-4 rounded-2xl border border-black/10">
                     <Globe2 className="text-teal-600 shrink-0 mt-0.5" size={20} />
                     <div>
                       <strong className="text-xs uppercase font-mono block text-gray-900">Global Deliveries</strong>
                       <span className="text-xs text-gray-600">Digital downloads delivered immediately; physical units shipped via standard trackable logistics.</span>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 bg-white p-4 rounded-xl border border-black/10">
+                  <div className="flex items-start gap-3 bg-white p-4 rounded-2xl border border-black/10">
                     <ShieldCheck className="text-teal-600 shrink-0 mt-0.5" size={20} />
                     <div>
                       <strong className="text-xs uppercase font-mono block text-gray-900">Compliance &amp; IP</strong>
@@ -440,7 +433,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Corporate & Address Card */}
-            <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-black/15 shadow-xl">
+            <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-black/10 shadow-xl">
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
                 <Building2 className="text-teal-600" size={28} />
                 <div>
@@ -449,37 +442,37 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              <div className="space-y-4 text-xs font-mono">
+              <div className="space-y-3.5 text-xs font-mono">
                 <div>
-                  <span className="text-gray-500 uppercase block text-[10px]">Legal Entity Name:</span>
+                  <span className="text-gray-500 uppercase block text-[10px] font-bold">Legal Entity Name:</span>
                   <span className="font-bold text-gray-900 text-sm">AMIRAE STUDIO LLC</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 uppercase block text-[10px]">Business Type:</span>
+                  <span className="text-gray-500 uppercase block text-[10px] font-bold">Business Type:</span>
                   <span className="text-gray-800">Limited Liability Company (LLC)</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 uppercase block text-[10px]">Industry Classification:</span>
+                  <span className="text-gray-500 uppercase block text-[10px] font-bold">Industry Classification:</span>
                   <span className="text-gray-800">3D Design, Modeling &amp; Digital Product Studio</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 uppercase block text-[10px]">Official Support &amp; Inquiries Email:</span>
+                  <span className="text-gray-500 uppercase block text-[10px] font-bold">Official Support &amp; Inquiries Email:</span>
                   <a href="mailto:arun@amirae.studio" className="text-teal-700 font-bold hover:underline">
                     arun@amirae.studio
                   </a>
                 </div>
                 <div>
-                  <span className="text-gray-500 uppercase block text-[10px]">Operating Hours:</span>
+                  <span className="text-gray-500 uppercase block text-[10px] font-bold">Operating Hours:</span>
                   <span className="text-gray-800">Monday – Friday: 9:00 AM – 6:00 PM EST</span>
                 </div>
               </div>
 
               <div className="mt-6 pt-4 border-t border-gray-100">
                 <a 
-                  href="/#contact"
-                  className="w-full inline-flex items-center justify-center py-3 px-4 rounded-xl bg-teal-500 text-black font-bold text-xs uppercase tracking-wider hover:bg-teal-400 transition-all"
+                  href="/#quote"
+                  className="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-2xl bg-[#21E1B5] text-black font-mono font-bold text-xs uppercase tracking-wider hover:bg-[#1bc79f] transition-all hover:scale-105"
                 >
-                  Contact Studio Leadership
+                  Request a Quote
                 </a>
               </div>
             </div>
@@ -489,19 +482,27 @@ export default function ServicesPage() {
 
       {/* CTA Section */}
       <section className="py-20 px-6 sm:px-8 md:px-16 text-center bg-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        <div className="max-w-3xl mx-auto p-10 sm:p-12 rounded-3xl bg-zinc-950 text-white shadow-2xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Ready to Start a Commercial 3D Project?
           </h2>
-          <p className="text-gray-600 mb-8 text-base">
+          <p className="text-gray-300 mb-8 text-base">
             Reach out to discuss custom 3D modeling, rapid physical prototyping, architectural scale modeling, or digital asset licensing with AMIRAE STUDIO LLC.
           </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider px-8 py-4 rounded-2xl hover:bg-gray-800 transition-all"
-          >
-            Submit Project Requirements <ArrowRight size={16} />
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/#quote"
+              className="inline-flex items-center gap-2 bg-[#21E1B5] text-black text-xs font-mono font-bold uppercase tracking-wider px-8 py-4 rounded-2xl hover:bg-[#1bc79f] transition-all hover:scale-105"
+            >
+              Submit Project Requirements <ArrowRight size={16} />
+            </a>
+            <a
+              href="/#contact"
+              className="inline-flex items-center gap-2 bg-zinc-800 text-white text-xs font-mono font-bold uppercase tracking-wider px-8 py-4 rounded-2xl hover:bg-zinc-700 transition-all border border-zinc-700"
+            >
+              Contact Studio Direct
+            </a>
+          </div>
         </div>
       </section>
 

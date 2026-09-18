@@ -1,45 +1,29 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { 
+  Mail, 
+  Send, 
+  Check, 
+  Copy, 
+  Clock, 
+  ShieldCheck, 
+  ExternalLink,
+  MessageSquare
+} from "lucide-react";
 
 export default function ContactSection() {
-  const [step, setStep] = useState(1);
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({
-    message: "",
     name: "",
     email: "",
+    subject: "Commercial Project Inquiry",
+    message: "",
   });
 
-  // 3D Tilt Effect State & Ref
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    // Calculate tilt angles (max 10 degrees)
-    setRotation({
-      x: (-y / (rect.height / 2)) * 8,
-      y: (x / (rect.width / 2)) * 8,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setRotation({ x: 0, y: 0 });
-  };
-
-  const handleNext = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (formData.message.trim()) setStep(2);
-  };
-
-  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleCopyEmail = (e: React.MouseEvent) => {
     e.preventDefault();
     navigator.clipboard.writeText("arun@amirae.studio");
     setCopied(true);
@@ -61,6 +45,7 @@ export default function ContactSection() {
           access_key: "e52fdb81-d925-4fa7-97a3-f37c9bf6032a",
           name: formData.name,
           email: formData.email,
+          subject: formData.subject,
           message: formData.message,
         }),
       });
@@ -69,287 +54,271 @@ export default function ContactSection() {
       if (result.success) {
         setSent(true);
       } else {
-        alert("Something went wrong. Please try again.");
+        alert("Something went wrong. Please try again or email us directly.");
       }
     } catch (error) {
-      alert("Network error. Please try again.");
+      alert("Network error. Please try again or email arun@amirae.studio.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section id="contact" className="relative bg-white text-gray-900 py-28 px-4 sm:px-6 lg:px-8 overflow-hidden font-[family-name:var(--font-your-hero-font)] perspective-1000">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Silkscreen:wght@400;700&display=swap');
-        .font-hand { font-family: 'Caveat', cursive; }
-        .font-pixel { font-family: 'Silkscreen', monospace; }
-        
-        @keyframes floatSlow {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-12px) rotate(3deg); }
-        }
-        .animate-float {
-          animation: floatSlow 6s ease-in-out infinite;
-        }
-        @keyframes floatSlowReverse {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(12px) rotate(-3deg); }
-        }
-        .animate-float-rev {
-          animation: floatSlowReverse 7s ease-in-out infinite;
-        }
-      `}</style>
-
-      {/* Graph-paper background */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.5]"
+    <section 
+      id="contact" 
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#faf9f5] border-t border-black/10 overflow-hidden font-[family-name:var(--font-your-hero-font)]"
+    >
+      {/* Background Grid */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-30"
         style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
 
-      {/* Floating 3D Geometric Badges/Shapes Background */}
-      <div className="absolute top-16 left-10 w-16 h-16 bg-gradient-to-br from-[#2AD5C6] to-emerald-400 rounded-2xl shadow-lg rotate-12 animate-float pointer-events-none opacity-80 hidden md:flex items-center justify-center text-white font-pixel text-xl">
-        3D
-      </div>
-      <div className="absolute bottom-20 right-12 w-20 h-20 bg-gradient-to-tr from-amber-300 to-[#F6DFA4] rounded-full shadow-lg animate-float-rev pointer-events-none opacity-80 hidden md:block" />
-
-      {/* "YOU" tag, peeking off the edge */}
-      <div
-        className="hidden sm:flex absolute top-10 left-0 -translate-x-1/2 items-center justify-center bg-black text-white text-xs font-bold px-4 py-1.5 rounded-full z-20 shadow-xl"
-        style={{ transform: "translateX(-40%) rotate(-8deg)" }}
-      >
-        YOU
-      </div>
-
-      <div className="max-w-5xl mx-auto relative z-10">
-        {/* Left polaroid with 3D float */}
-        <div
-          className="hidden lg:block absolute left-[-50px] top-12 w-52 bg-white p-3 pb-6 rounded-md shadow-2xl animate-float transition-transform duration-300 hover:rotate-0 hover:scale-105 cursor-pointer"
-          style={{ transform: "rotate(-7deg)" }}
-        >
-          <div className="w-full h-60 overflow-hidden bg-gray-100 rounded-sm">
-            <img
-              src="/bird.webp"
-              alt="Random shot"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <p className="font-hand text-xl text-center mt-3 text-gray-700">random shot</p>
+      <div className="max-w-6xl mx-auto relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-medium tracking-tight text-gray-900 leading-tight">
+            Connect With Our <span className="text-teal-600">Studio</span>
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            Have a question, custom commission idea, or partnership proposal? Reach out directly to our team.
+          </p>
         </div>
 
-        {/* Right polaroid with 3D float */}
-        <div
-          className="hidden lg:block absolute right-[-50px] top-6 w-52 bg-white p-3 pb-6 rounded-md shadow-2xl animate-float-rev transition-transform duration-300 hover:rotate-0 hover:scale-105 cursor-pointer"
-          style={{ transform: "rotate(6deg)" }}
-        >
-          <div className="w-full h-60 overflow-hidden bg-gray-100 rounded-sm">
-            <img
-              src="/bird2.avif"
-              alt="Tiny moment"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <p className="font-hand text-xl text-center mt-3 text-gray-700">tiny moment!</p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          
+          {/* Left Column: Direct Studio Information */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            
+            <div className="bg-white rounded-3xl p-7 sm:p-8 border border-black/10 shadow-sm space-y-6">
+              <div>
+                <span className="font-mono text-xs font-bold uppercase tracking-widest text-teal-700 block mb-1">
+                  Official Studio Details
+                </span>
+                <h3 className="text-2xl font-bold text-gray-900">AMIRAE STUDIO LLC</h3>
+                <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+                  Premier 3D design, digital product prototyping, precision scale miniatures, and interactive WebGL engineering studio.
+                </p>
+              </div>
 
-        {/* Center column */}
-        <div className="max-w-xl mx-auto text-center">
-          <p className="font-hand text-2xl text-gray-800 mb-1">leave me a note</p>
-          <svg width="120" height="14" viewBox="0 0 120 14" className="mx-auto mb-6" fill="none">
-            <path d="M2 8C30 3 60 3 90 6C100 7 110 9 118 5" stroke="#111" strokeWidth="2" strokeLinecap="round" />
-            <path d="M2 12C30 8 60 8 90 10C100 11 110 12 118 9" stroke="#111" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
-          </svg>
-
-          {/* Heading with Figma-style selection box */}
-          <div className="relative inline-block mb-12" style={{ transform: "rotate(-2deg)" }}>
-            <div className="absolute -inset-4 border border-gray-800 shadow-sm" />
-            {["-top-1.5 -left-1.5", "-top-1.5 -right-1.5", "-bottom-1.5 -left-1.5", "-bottom-1.5 -right-1.5"].map(
-              (pos) => (
-                <span
-                  key={pos}
-                  className={`absolute ${pos} w-3 h-3 bg-white border-2 border-[#2AD5C6] shadow-sm`}
-                />
-              )
-            )}
-            <h2 className="font-pixel text-5xl sm:text-6xl tracking-wider px-6 py-3 bg-white/40 backdrop-blur-xs">
-              CONTACT
-            </h2>
-          </div>
-
-          {/* 3D Interactive Sticky-Note Form Card */}
-          <div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className="relative text-left  p-6 sm:p-10 shadow-2xl transition-transform duration-100 ease-out  border-amber-600/30"
-            style={{
-              backgroundColor: "#F6DFA4",
-              transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale3d(1.02, 1.02, 1.02)`,
-              transformStyle: "preserve-3d",
-            }}
-          >
-            {/* Glossy highlight for 3D depth */}
-            <div className="absolute inset-0  bg-gradient-to-tr from-white/0 via-white/20 to-white/0 pointer-events-none" />
-
-            {!sent && step === 1 && (
-              <form onSubmit={handleNext} style={{ transform: "translateZ(30px)" }}>
-                <label className="block font-mono text-xs font-bold uppercase tracking-wider text-gray-800 mb-3 drop-shadow-xs">
-                  What's on your mind?
-                </label>
-                <textarea
-                  rows={5}
-                  required
-                  value={formData.message}
-                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-white/60 backdrop-blur-xs focus:bg-white focus:outline-none focus:ring-2 focus:ring-black/20 text-sm sm:text-base text-gray-800 resize-y placeholder:text-gray-500  p-4 shadow-inner transition-all"
-                  placeholder="Tell me about your project..."
-                />
-                <button
-                  type="submit"
-                  className="mt-5 bg-black text-white text-xs font-mono font-bold uppercase tracking-wider px-6 py-3  hover:bg-gray-800 hover:shadow-lg transition-all active:scale-95 cursor-pointer"
-                >
-                  Next (1/2) →
-                </button>
-              </form>
-            )}
-
-            {!sent && step === 2 && (
-              <form onSubmit={handleSubmit} style={{ transform: "translateZ(30px)" }}>
-                <label className="block font-mono text-xs font-bold uppercase tracking-wider text-gray-800 mb-3">
-                  Who's asking?
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Your name"
-                  value={formData.name}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-white/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-black/20 text-sm sm:text-base text-gray-800 placeholder:text-gray-500  px-4 py-3 mb-3 shadow-inner transition-all"
-                />
-                <input
-                  type="email"
-                  required
-                  placeholder="you@example.com"
-                  value={formData.email}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-white/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-black/20 text-sm sm:text-base text-gray-800 placeholder:text-gray-500  px-4 py-3 shadow-inner transition-all"
-                />
-                <div className="flex items-center gap-4 mt-6">
+              <div className="space-y-3.5 pt-4 border-t border-gray-100 text-sm">
+                
+                {/* Email with copy */}
+                <div className="flex items-start justify-between gap-3 p-3.5 rounded-2xl bg-gray-50 border border-gray-200/60">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-[#21E1B5]/20 text-teal-900 flex items-center justify-center shrink-0">
+                      <Mail size={18} />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-mono uppercase text-gray-500 block">Direct Inquiries</span>
+                      <a href="mailto:arun@amirae.studio" className="font-semibold text-gray-900 hover:text-teal-600">
+                        arun@amirae.studio
+                      </a>
+                    </div>
+                  </div>
                   <button
-                    type="button"
-                    onClick={() => setStep(1)}
-                    className="text-xs font-mono font-bold uppercase tracking-wider text-gray-700 hover:opacity-60 transition-opacity cursor-pointer"
+                    onClick={handleCopyEmail}
+                    className="p-2 rounded-xl bg-white border border-gray-200 text-gray-600 hover:text-black hover:border-black transition-all cursor-pointer"
+                    title="Copy email address"
                   >
-                    ← Back
+                    {copied ? <Check size={16} className="text-emerald-600" /> : <Copy size={16} />}
                   </button>
+                </div>
+
+                {/* Operating Hours */}
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-gray-50 border border-gray-200/60">
+                  <div className="w-9 h-9 rounded-xl bg-gray-200/80 text-gray-700 flex items-center justify-center shrink-0">
+                    <Clock size={18} />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono uppercase text-gray-500 block">Studio Hours</span>
+                    <span className="font-semibold text-gray-900">Mon - Fri: 9:00 AM – 6:00 PM EST</span>
+                  </div>
+                </div>
+
+                {/* Response Guarantee */}
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-gray-50 border border-gray-200/60">
+                  <div className="w-9 h-9 rounded-xl bg-teal-100/70 text-teal-900 flex items-center justify-center shrink-0">
+                    <ShieldCheck size={18} />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono uppercase text-gray-500 block">Response SLA</span>
+                    <span className="font-semibold text-gray-900">Guaranteed response within 24 hours</span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Social Channels */}
+              <div className="pt-4 border-t border-gray-100">
+                <span className="text-xs font-mono uppercase text-gray-500 block mb-3 font-semibold">Studio Channels</span>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://www.instagram.com/amirae__studio/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-xs font-mono font-bold text-gray-900 hover:border-black hover:shadow-xs transition-all"
+                  >
+                    <span>Instagram</span>
+                    <ExternalLink size={12} className="text-gray-400" />
+                  </a>
+
+                  <a
+                    href="https://discord.com/channels/1529705981926182953"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-xs font-mono font-bold text-gray-900 hover:border-black hover:shadow-xs transition-all"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                    </svg>
+                    <span>Discord</span>
+                    <ExternalLink size={12} className="text-gray-400" />
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Quote Prompt Card */}
+            <div className="bg-[#1a1a1a] text-white rounded-3xl p-7 sm:p-8 border border-zinc-800 shadow-lg">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#21E1B5] font-bold block mb-1">
+                Detailed Quotation
+              </span>
+              <h4 className="text-lg font-bold">Looking for a custom project quote?</h4>
+              <p className="text-xs text-gray-400 mt-1 mb-4 leading-relaxed">
+                Use our comprehensive Request a Quote wizard to select specific deliverables, budget tiers, and target turnaround.
+              </p>
+              <a
+                href="#quote"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#21E1B5] text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#1bc79f] transition-all hover:scale-105"
+              >
+                Go to Quote Wizard →
+              </a>
+            </div>
+
+          </div>
+
+          {/* Right Column: Clean Rounded Form */}
+          <div className="lg:col-span-7">
+            <div className="bg-white rounded-3xl p-7 sm:p-10 border border-black/10 shadow-sm">
+              
+              {!sent ? (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 tracking-tight">
+                      Send a Message
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Fill out the form below and we will respond promptly.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono uppercase font-bold tracking-wider text-gray-700 mb-2">
+                        Your Name <span className="text-rose-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Alex Morgan"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#21E1B5] focus:border-transparent transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-mono uppercase font-bold tracking-wider text-gray-700 mb-2">
+                        Email Address <span className="text-rose-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="alex@company.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#21E1B5] focus:border-transparent transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase font-bold tracking-wider text-gray-700 mb-2">
+                      Subject / Topic
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. 3D Miniature Commission or Product Prototyping"
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#21E1B5] focus:border-transparent transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase font-bold tracking-wider text-gray-700 mb-2">
+                      Your Message <span className="text-rose-500">*</span>
+                    </label>
+                    <textarea
+                      rows={5}
+                      required
+                      placeholder="Describe your inquiry, project scope, or questions in detail..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#21E1B5] focus:border-transparent transition-all resize-y"
+                    />
+                  </div>
+
                   <button
                     type="submit"
                     disabled={loading}
-                    className="bg-black text-white text-xs font-mono font-bold uppercase tracking-wider px-6 py-3  hover:bg-gray-800 hover:shadow-lg transition-all disabled:opacity-50 active:scale-95 cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 rounded-xl font-mono text-xs font-bold uppercase tracking-wider hover:bg-gray-800 transition-all disabled:opacity-50 cursor-pointer shadow-md hover:scale-105"
                   >
-                    {loading ? "Sending..." : "Send Message (2/2)"}
+                    {loading ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                        <span>Sending Message...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Message</span>
+                        <Send size={14} />
+                      </>
+                    )}
+                  </button>
+                </form>
+              ) : (
+                <div className="py-12 text-center space-y-4">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
+                    <Check size={32} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Message Received!</h3>
+                  <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
+                    Thank you for reaching out to AMIRAE STUDIO LLC. Our team has received your note and will get back to you within 24 hours.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setSent(false);
+                      setFormData({ name: "", email: "", subject: "Commercial Project Inquiry", message: "" });
+                    }}
+                    className="mt-4 inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-teal-700 hover:underline"
+                  >
+                    ← Send Another Message
                   </button>
                 </div>
-              </form>
-            )}
-
-            {sent && (
-              <div className="py-8 text-center" style={{ transform: "translateZ(30px)" }}>
-                <p className="font-hand text-4xl text-gray-900">got it, thanks! ✦</p>
-                <p className="text-sm font-mono text-gray-700 mt-2">I'll get back to you soon.</p>
-              </div>
-            )}
-          </div>
-
-          {/* Handwritten arrow + availability note */}
-          <div className="relative mt-8 flex items-start justify-center gap-2">
-            <svg width="40" height="40" viewBox="0 0 40 40" className="mt-1 shrink-0 animate-bounce" fill="none">
-              <path
-                d="M32 8C24 8 10 14 8 26C7.5 29 9 32 12 32"
-                stroke="#111"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-              <path d="M6 27L12 32L17 27" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <p className="font-hand text-2xl text-gray-800 -rotate-2">Available for custom commercial 3D &amp; CAD commissions</p>
-          </div>
-
-          {/* Legal Business Information Card */}
-          <div className="mt-8 bg-white/90 backdrop-blur-md border border-gray-300 p-6 rounded-2xl shadow-lg text-left font-mono text-xs text-gray-800 space-y-2">
-            <div className="flex items-center justify-between border-b border-gray-200 pb-2">
-              <span className="font-bold text-black uppercase tracking-wider text-sm">AMIRAE STUDIO LLC</span>
-              <span className="text-[10px] bg-[#2AD5C6]/30 text-teal-950 font-bold px-2 py-0.5 rounded">Commercial Studio</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-[11px]">
-              <div>
-                <span className="text-gray-500 block">Direct Inquiries:</span>
-                <a href="mailto:arun@amirae.studio" className="font-bold text-teal-700 hover:underline">arun@amirae.studio</a>
-              </div>
-              <div>
-                <span className="text-gray-500 block">Commercial Scope:</span>
-                <span className="font-medium">3D CAD, Physical Printing, Digital Assets</span>
-              </div>
-              <div>
-                <span className="text-gray-500 block">Business Hours:</span>
-                <span className="font-medium">Mon - Fri: 9:00 AM – 6:00 PM EST</span>
-              </div>
-              <div>
-                <span className="text-gray-500 block">Commercial Services:</span>
-                <a href="/services" className="text-teal-700 font-bold hover:underline">View All Offerings →</a>
-              </div>
-            </div>
-          </div>
-
-          {/* 3D Floating Social Pill */}
-          <div className="relative inline-flex items-center gap-8 mt-6 bg-white/80 backdrop-blur-md border border-gray-200  px-8 py-5 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-            {/* Copy Notification Toast */}
-            <AnimatePresence>
-              {copied && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                  animate={{ opacity: 1, y: -8, scale: 1 }}
-                  exit={{ opacity: 0, y: 4, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute -top-10 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap rounded-md bg-black px-2.5 py-1 text-[11px] font-bold text-white shadow-lg pointer-events-none"
-                >
-                  Email copied!
-                </motion.div>
               )}
-            </AnimatePresence>
 
-            {/* Instagram */}
-            <a href="https://www.instagram.com/amirae__studio/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-gray-900 hover:text-[#2AD5C6] transition-colors">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-              </svg>
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider">Instagram</span>
-            </a>
-
-            {/* Discord */}
-            <a href="https://discord.com/channels/1529705981926182953" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-gray-900 hover:text-indigo-600 transition-colors">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 5.378a19.97 19.97 0 0 0-4.832-1.5 18.57 18.57 0 0 0-1.127 2.348 18.42 18.42 0 0 0-5.8 0 18.3 18.3 0 0 0-1.133-2.348A19.9 19.9 0 0 0 3 5.38C.48 9.24-.22 13.01.21 16.74a20.15 20.15 0 0 0 6.04 3.05 14.86 14.86 0 0 0 1.28-2.11 13.1 13.1 0 0 1-2.03-.98c.17-.12.33-.25.49-.37a14.28 14.28 0 0 0 12.02 0c.16.12.32.25.49.37a13.1 13.1 0 0 1-2.03.98 14.9 14.9 0 0 0 1.28 2.11 20.1 20.1 0 0 0 6.04-3.05c.5-4.32-.82-8.13-3.05-11.36zM8.5 14.33c-1.1 0-2-1.02-2-2.28 0-1.27.88-2.28 2-2.28 1.13 0 2.01 1.03 2 2.28 0 1.26-.88 2.28-2 2.28zm7 0c-1.1 0-2-1.02-2-2.28 0-1.27.88-2.28 2-2.28 1.13 0 2.01 1.03 2 2.28 0 1.26-.87 2.28-2 2.28z"/>
-              </svg>
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider">Discord</span>
-            </a>
-
-            {/* Email */}
-            <a href="mailto:arun@amirae.studio" onClick={handleEmailClick} className="flex flex-col items-center gap-2 text-gray-900 hover:text-amber-600 transition-colors">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect width="20" height="16" x="2" y="4" rx="2"/>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider">Mail</span>
-            </a>
+            </div>
           </div>
+
         </div>
+
       </div>
     </section>
   );
