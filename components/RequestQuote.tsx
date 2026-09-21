@@ -165,10 +165,10 @@ ${projectBrief}
       if (result.success) {
         setSent(true);
       } else {
-        alert("Something went wrong with the quote submission. Please email arun@amirae.studio directly.");
+        alert("Something went wrong with the quote submission. Please email contact@amirae.studio directly.");
       }
     } catch (err) {
-      alert("Network error. Please email arun@amirae.studio directly.");
+      alert("Network error. Please email contact@amirae.studio directly.");
     } finally {
       setLoading(false);
     }
