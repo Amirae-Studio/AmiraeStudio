@@ -457,8 +457,8 @@ export default function ServicesPage() {
                 </div>
                 <div>
                   <span className="text-gray-500 uppercase block text-[10px] font-bold">Official Support &amp; Inquiries Email:</span>
-                  <a href="mailto:arun@amirae.studio" className="text-teal-700 font-bold hover:underline">
-                    arun@amirae.studio
+                  <a href="mailto:contact@amirae.studio" className="text-teal-700 font-bold hover:underline">
+                    contact@amirae.studio
                   </a>
                 </div>
                 <div>

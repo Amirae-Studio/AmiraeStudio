@@ -47,7 +47,7 @@ const socialLinks = [
   },
   { 
     name: "Gmail", 
-    href: "mailto:arun@amirae.studio", 
+    href: "mailto:contact@amirae.studio", 
     svgPath: "M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.713v13.426h24v-13.426l-12 9.713z" 
   },
   { 
@@ -151,9 +151,9 @@ const Footer = () => {
               <div className="font-bold text-black uppercase tracking-wider">Legal Entity Identification</div>
               <div><span className="font-semibold">Entity:</span> AMIRAE STUDIO LLC</div>
               <div><span className="font-semibold">phone:</span>8951478989</div>
-              <div><span className="font-semibold">Inquiries:</span> arun@amirae.studio</div>
+              <div><span className="font-semibold">Inquiries:</span> contact@amirae.studio</div>
               
-              <div><span className="font-semibold">Operations:</span> Principal Operating &amp; Digital Fulfillment Studio</div>
+              <div><span className="font-semibold">Address:</span> Thirunagar,Madurai,Tamil Nadu,625006,India</div>
             </div>
 
             <motion.a

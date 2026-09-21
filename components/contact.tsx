@@ -25,7 +25,7 @@ export default function ContactSection() {
 
   const handleCopyEmail = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigator.clipboard.writeText("arun@amirae.studio");
+    navigator.clipboard.writeText("contact@amirae.studio");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -57,7 +57,7 @@ export default function ContactSection() {
         alert("Something went wrong. Please try again or email us directly.");
       }
     } catch (error) {
-      alert("Network error. Please try again or email arun@amirae.studio.");
+      alert("Network error. Please try again or email contact@amirae.studio.");
     } finally {
       setLoading(false);
     }
@@ -115,8 +115,8 @@ export default function ContactSection() {
                     </div>
                     <div>
                       <span className="text-[11px] font-mono uppercase text-gray-500 block">Direct Inquiries</span>
-                      <a href="mailto:arun@amirae.studio" className="font-semibold text-gray-900 hover:text-teal-600">
-                        arun@amirae.studio
+                      <a href="mailto:contact@amirae.studio" className="font-semibold text-gray-900 hover:text-teal-600">
+                        contact@amirae.studio
                       </a>
                     </div>
                   </div>
