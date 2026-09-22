@@ -31,6 +31,8 @@ const footerLinks = [
     title: "Company & Governance",
     links: [
       { name: "About AMIRAE STUDIO LLC", href: "/about" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Terms & Conditions", href: "/terms-and-conditions" },
       { name: "Request a Quote", href: "/#quote" },
       { name: "Revenue & Pricing Model", href: "/services#revenue-model" },
       { name: "U.S. & Global Operations", href: "/services#us-operations" },
@@ -212,13 +214,22 @@ const Footer = () => {
           animate={isInView ? "visible" : "hidden"}
           custom={0.5}
         >
-          <div className="text-center sm:text-left space-y-1">
+          <div className="text-center sm:text-left space-y-1.5">
             <p className="text-xs font-bold text-gray-900">
               &copy; {new Date().getFullYear()} AMIRAE STUDIO LLC. All Rights Reserved.
             </p>
             <p className="text-[11px] text-gray-800 font-medium">
               Commercial 3D Modeling • Rapid Prototyping • Digital Assets • Physical Print Solutions
             </p>
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-[11px] font-mono text-gray-900 font-bold pt-0.5">
+              <a href="/privacy-policy" className="hover:underline hover:text-black">
+                Privacy Policy
+              </a>
+              <span>•</span>
+              <a href="/terms-and-conditions" className="hover:underline hover:text-black">
+                Terms &amp; Conditions
+              </a>
+            </div>
           </div>
 
           <div className="relative flex flex-wrap items-center justify-center gap-3">
