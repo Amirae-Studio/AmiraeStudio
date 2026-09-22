@@ -1,52 +1,52 @@
-import ContactSection from "@/components/contact";
-import FaqSection from "@/components/Faq";
-import FooterSection from "@/components/footer";
-import { Navbar } from "@/components/Navbar";
-import HeroSection from "@/components/pages/Hero";
-import ProductSection from "@/components/product";
-import TeamSection from "@/components/team";
-import RequestQuoteSection from "@/components/RequestQuote";
 import type { Metadata } from "next";
+import { STUDIO } from "@/lib/content";
+import { Header } from "@/components/site/Header";
+import { Hero } from "@/components/site/Hero";
+import { Engagement, Faq, FinalCta, Letter, Services, Work } from "@/components/site/Sections";
+import { Quote } from "@/components/site/Quote";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
+
+const title = "AMIRAE STUDIO LLC — 3D Design, Prototyping & Physical Modeling";
+const description =
+  "AMIRAE STUDIO LLC is a premier 3D design and digital product studio specializing in high-precision 3D modeling, rapid product prototyping, physical 3D miniatures, and interactive digital engineering.";
 
 export const metadata: Metadata = {
-  title: "AMIRAE STUDIO LLC — 3D Design, Prototyping & Physical Modeling",
-  description: "AMIRAE STUDIO LLC is a premier 3D design and digital product studio specializing in high-precision 3D modeling, rapid product prototyping, physical 3D miniatures, and interactive digital engineering.",
-  metadataBase: new URL("https://www.amirae.studio"),
+  title,
+  description,
   openGraph: {
-    title: "AMIRAE STUDIO LLC — 3D Design, Prototyping & Physical Modeling",
-    description: "AMIRAE STUDIO LLC is a premier 3D design and digital product studio specializing in high-precision 3D modeling, rapid product prototyping, physical 3D miniatures, and interactive digital engineering.",
+    title,
+    description,
     url: "https://www.amirae.studio",
-    siteName: "AMIRAE STUDIO LLC",
-    images: [
-      {
-        url: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/brand/amirae_studio_logo-removebg-preview.webp",
-        width: 1200,
-        height: 630,
-        alt: "AMIRAE STUDIO LLC Preview Banner",
-      },
-    ],
+    siteName: STUDIO.name,
+    images: [{ url: STUDIO.logo, width: 1200, height: 630, alt: "AMIRAE STUDIO LLC Preview Banner" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AMIRAE STUDIO LLC — 3D Design, Prototyping & Physical Modeling",
-    description: "AMIRAE STUDIO LLC is a premier 3D design and digital product studio specializing in high-precision 3D modeling, rapid product prototyping, physical 3D miniatures, and interactive digital engineering.",
-    images: ["https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/brand/amirae_studio_logo-removebg-preview.webp"],
+    title,
+    description,
+    images: [STUDIO.logo],
   },
 };
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white font-sans">
-      <Navbar />
-      <HeroSection />
-      <ProductSection />
-      <TeamSection />
-      <FaqSection />
-      <RequestQuoteSection />
-      <ContactSection />
-      <FooterSection />
-    </div>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Letter />
+        <Work />
+        <Services />
+        <Engagement />
+        <Quote />
+        <Faq />
+        <Contact />
+        <FinalCta />
+      </main>
+      <Footer />
+    </>
   );
 }

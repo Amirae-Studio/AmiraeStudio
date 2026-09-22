@@ -1,22 +1,355 @@
 @import "tailwindcss";
 
+/* ── Design tokens ─────────────────────────────────────────────
+   Warm paper canvas, rounded heavy type, soft pastel panels and a
+   chunky "pressable" teal button borrowed from the brand logo. */
+/* Light by default. Dark applies when the OS prefers it (unless the
+   visitor chose light) or when the visitor chose dark in the switcher.
+   Explicit sets instead of the CSS color function, because Tailwind's
+   compiler rewrites that into a media query a manual switch can't beat. */
 :root {
   color-scheme: light;
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-your-hero-font: 'Geist', sans-serif; /* Unnodaiya font name-ah inga replace panniko, e.g. Geist, Plus Jakarta Sans, etc. */
+  --canvas: #fffdf9;
+  --ink: #242422;
+  --muted: #63635f;
+  --surface: #ffffff;
+  --line: #eae7df;
+  --soft: #f2efe9;
+  --teal: #0b8f71;
+  --pink: #b53270;
+  --blue: #2459e8;
+  --orange: #b8520f;
+  --mint: #ddf6ec;
+  --sky: #e5edff;
+  --blush: #ffe3ee;
+  --butter: #fff1c9;
+  --peach: #ffe2c1;
+  --lilac: #ece6ff;
+  --marker: #a9f1dc;
+
+  --brand: #21e1b5;
+  --brand-ink: #0b2a22;
+  --brand-shadow: #0f9d7c;
+  --lime: #b8f03c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --canvas: #18191c;
+    --ink: #f2f0eb;
+    --muted: #b8b8b2;
+    --surface: #232428;
+    --line: #37383d;
+    --soft: #2e2f34;
+    --teal: #5fe6c4;
+    --pink: #f394be;
+    --blue: #90b0ff;
+    --orange: #f7b37a;
+    --mint: #1f3a32;
+    --sky: #26334e;
+    --blush: #482d3b;
+    --butter: #43381e;
+    --peach: #493326;
+    --lilac: #342e4d;
+    --marker: #1f6b58;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #18191c;
+  --ink: #f2f0eb;
+  --muted: #b8b8b2;
+  --surface: #232428;
+  --line: #37383d;
+  --soft: #2e2f34;
+  --teal: #5fe6c4;
+  --pink: #f394be;
+  --blue: #90b0ff;
+  --orange: #f7b37a;
+  --mint: #1f3a32;
+  --sky: #26334e;
+  --blush: #482d3b;
+  --butter: #43381e;
+  --peach: #493326;
+  --lilac: #342e4d;
+  --marker: #1f6b58;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-your-hero-font: var(--font-your-hero-font);
+  --color-canvas: var(--canvas);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+  --color-teal: var(--teal);
+  --color-pink: var(--pink);
+  --color-blue: var(--blue);
+  --color-orange: var(--orange);
+  --color-mint: var(--mint);
+  --color-sky: var(--sky);
+  --color-blush: var(--blush);
+  --color-butter: var(--butter);
+  --color-peach: var(--peach);
+  --color-lilac: var(--lilac);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-lime: var(--lime);
+
+  --font-display: var(--font-nunito), ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-your-hero-font), Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-wrap: balance;
+  }
+  ::selection {
+    color: #242422;
+    background: #b6f5e3;
+  }
+  :focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 4px;
+  }
+  section[id] {
+    scroll-margin-top: 24px;
+  }
+}
+
+@layer components {
+  .page-width {
+    width: min(1240px, 100% - 32px);
+    margin-inline: auto;
+  }
+  @media (min-width: 768px) {
+    .page-width {
+      width: min(1240px, 100% - 96px);
+    }
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: -0.045em;
+    line-height: 1.04;
+  }
+
+  /* Hand-drawn marker underline behind a word */
+  .marker {
+    position: relative;
+    isolation: isolate;
+    white-space: nowrap;
+  }
+  .marker::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2px;
+    right: -2px;
+    bottom: 0.04em;
+    height: 0.2em;
+    border-radius: 50%;
+    background: var(--marker);
+    transform: rotate(-2deg);
+  }
+
+  .color-dots {
+    display: inline-flex;
+    padding-right: 6px;
+  }
+  .color-dots i {
+    width: 14px;
+    height: 14px;
+    margin-right: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--canvas);
+  }
+
+  /* Chunky pressable pill */
+  .btn-press {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-height: 56px;
+    padding: 14px 26px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--brand);
+    color: var(--brand-ink);
+    font-weight: 750;
+    font-size: 16px;
+    box-shadow: 0 5px 0 var(--brand-shadow);
+    transition:
+      transform 0.15s,
+      box-shadow 0.15s;
+    cursor: pointer;
+  }
+  .btn-press:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 var(--brand-shadow);
+  }
+  .btn-press:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--brand-shadow);
+  }
+  .btn-press:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .btn-press > .arrow {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .btn-soft {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: var(--soft);
+    font-size: 14px;
+    font-weight: 650;
+    transition: background 0.15s;
+  }
+  .btn-soft:hover {
+    background: var(--mint);
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-block: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: color 0.15s;
+  }
+  .text-link:hover {
+    color: var(--teal);
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    color: var(--muted);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 32px;
+    overflow: hidden;
+  }
+
+  .heading-dot {
+    display: grid;
+    place-items: center;
+    width: 96px;
+    height: 96px;
+    border-radius: 32px;
+    font-size: 56px;
+    line-height: 1;
+    transform: rotate(9deg);
+  }
+
+  .field {
+    width: 100%;
+    border-radius: 16px;
+    border: 2px solid transparent;
+    background: var(--soft);
+    padding: 12px 16px;
+    font-size: 15px;
+    color: var(--ink);
+    transition:
+      border-color 0.15s,
+      background 0.15s;
+  }
+  .field::placeholder {
+    color: var(--muted);
+    opacity: 0.8;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--brand);
+    background: var(--surface);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background: var(--surface);
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 650;
+    box-shadow: 0 5px 18px #252b4412;
+    transition:
+      transform 0.16s,
+      border-color 0.16s;
+    cursor: pointer;
+  }
+  .chip:hover {
+    transform: translateY(-3px);
+  }
+  .chip[aria-pressed="true"] {
+    border-color: currentColor;
+  }
+}
+
+/* Gentle reveal-on-scroll, progressive enhancement only */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+  }
+  .float-slow {
+    animation: float 7s ease-in-out infinite;
+  }
+  @keyframes float {
+    50% {
+      transform: translateY(-8px) rotate(-3deg);
+    }
+  }
+}
+
+@keyframes fill-bar {
+  from {
+    width: 8%;
+  }
 }
