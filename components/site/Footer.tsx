@@ -16,7 +16,7 @@ const FOOTER_COLUMNS = [
       { name: "Product prototyping", href: "/services#product-design" },
       { name: "3D printing", href: "/services#3d-printing" },
       { name: "Architecture & heritage", href: "/services#architectural" },
-      { name: "Interactive 3D web", href: "/services#digital-ecosystems" },
+      { name: "Interactive 3D web", href: "/services#web-3d" },
     ],
   },
   {

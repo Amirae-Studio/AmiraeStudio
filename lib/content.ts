@@ -5,7 +5,7 @@ export const STUDIO = {
   legalName: "AMIRAE STUDIO LLC",
   email: "contact@amirae.studio",
   address: "30 N Gould St Ste R Sheridan, WY 82801",
-  logo: "/logo2.png",
+  logo: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/logo2.png",
   makerworld:
     "https://makerworld.com/en/crowdfunding/313-framecity-high-detailed-cities-in-frames",
   socials: [
@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
     summary: "Hand-modeled cities, turned into framed 3D art",
     desc: "A curated collection of hand-modeled cities, transformed into refined, customizable 3D art. Every city includes its most iconic districts, skylines and landmarks, modeled for maximum print quality.",
     tags: ["3D Printing", "Miniatures"],
-    image: "/framecity.png",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/framecity.jpeg",
     tint: "#d8ecff",
     link: "https://frame-city.vercel.app/",
   },
@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
     summary: "A modular marble-maze builder you can print",
     desc: "Design your own path by combining crafted modular pieces. Shape every twist, turn and obstacle, preview it in 3D and export a ready-to-print masterpiece.",
     tags: ["Web 3D", "3D Printing"],
-    image: "/maze.png",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/maze.png",
     tint: "#e9e9e9",
     link: "https://maze-foundry.vercel.app/",
   },
@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
     summary: "Tactile fidget toys inspired by food we love",
     desc: "Fruits, desserts and favourite snacks reimagined as charming little clickers — designed to bring fun and satisfying interaction to every click.",
     tags: ["Product Art", "Tabletop"],
-    image: "/click.png",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/click.jpg",
     tint: "#fbefc4",
   },
   {
@@ -75,7 +75,7 @@ export const PROJECTS: Project[] = [
     summary: "Monuments and towers as printable scale models",
     desc: "Iconic buildings and timeless towers, each hand-crafted by 3D artists to capture proportion, silhouette and façade detail in a printable model.",
     tags: ["Architecture", "3D Models"],
-    image: "/heri.png",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/heri.png",
     tint: "#dfe6f0",
   },
   {
@@ -85,7 +85,7 @@ export const PROJECTS: Project[] = [
     summary: "Wiggly, printable sea creatures for little hands",
     desc: "Happy fish, cute crabs, friendly turtles and playful dolphins — colourful flexi toys designed to twist, wiggle and explore.",
     tags: ["3D Printing", "Toys"],
-    image: "/aqua.jpg",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/aqua.jpg",
     tint: "#ffd9e8",
   },
 ];
@@ -138,7 +138,7 @@ export const SERVICES: Service[] = [
     clients: "Hardware startups, product manufacturers, Kickstarter creators",
     engagement: "50% upfront, 50% on final CAD sign-off",
     timeline: "2–4 weeks",
-    image: "/click.png",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/click.jpg",
   },
   {
     id: "3d-printing",
@@ -174,7 +174,7 @@ export const SERVICES: Service[] = [
     clients: "Cultural institutions, heritage projects, developers, collectors",
     engagement: "Fixed-price contracts and limited-edition runs",
     timeline: "2–6 weeks",
-    image: "/paris-frame.jpg",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/paris-frame.jpg",
   },
   {
     id: "web-3d",
@@ -192,7 +192,7 @@ export const SERVICES: Service[] = [
     clients: "E-commerce retailers, SaaS platforms, design agencies",
     engagement: "Fixed-scope contracts or monthly retainers",
     timeline: "2–8 weeks",
-    image: "/images.jpeg",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/images.jpg",
   },
 ];
 

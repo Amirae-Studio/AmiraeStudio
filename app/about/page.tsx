@@ -70,7 +70,7 @@ export default function AboutPage() {
             />
           </div>
           <div className="overflow-hidden rounded-3xl md:col-span-5">
-            <img src="/images.jpeg" alt="The Amirae team at work" className="h-full min-h-72 w-full object-cover" />
+            <img src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/images.jpg" alt="The Amirae team at work" className="h-full min-h-72 w-full object-cover" />
           </div>
         </Reveal>
       </section>
@@ -130,7 +130,7 @@ export default function AboutPage() {
         <Reveal className="md:col-span-6">
           <div className="overflow-hidden rounded-3xl bg-soft">
             <img
-              src="/makerworld.jpg"
+              src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/makerworld.jpg"
               alt="FrameCity model on MakerWorld"
               className="aspect-square w-full object-cover"
             />

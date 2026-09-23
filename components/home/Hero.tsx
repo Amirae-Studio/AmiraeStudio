@@ -6,14 +6,13 @@ import { LineReveal, Reveal } from "@/components/site/Reveal";
 import { PillButton } from "@/components/site/PillButton";
 
 const CAPSULE_IMAGES = [
-  "/f1.jpg",
-  "/f2.jpg",
-  "/f4.jpg",
-  "/f5.jpg",
-  "/paris-frame.jpg",
-  "/london-preview.jpg",
-  "/f3.jpg",
-  "/f1.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/f1.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/maze2.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/f4.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/f5.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/paris-frame.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/london-preview.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/f1.jpg",
 ];
 
 function HeroImageCapsule() {
