@@ -27,7 +27,7 @@ const PRIVACY_SECTIONS: LegalSection[] = [
           At <strong>{STUDIO.legalName || STUDIO.name}</strong> (&quot;Company&quot;, &quot;Amirae Studio&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), we respect your privacy and are committed to protecting the personal data, intellectual property, and proprietary CAD references you share with us.
         </p>
         <p>
-          This Privacy Policy applies to personal information and project data collected through our website (<a href="https://www.amirae.studio" className="text-ink font-semibold underline underline-offset-2 hover:text-black">amirae.studio</a>), direct project inquiries, quote requests, CAD upload portals, custom contract executions, and international fabrication orders.
+          This Privacy Policy applies to personal information and project data collected through our website (<a href="https://www.amirae.studio" className="text-ink font-semibold underline underline-offset-4 hover:text-muted">amirae.studio</a>), direct project inquiries, quote requests, CAD upload portals, custom contract executions, and international fabrication orders.
         </p>
       </>
     ),
@@ -79,8 +79,8 @@ const PRIVACY_SECTIONS: LegalSection[] = [
         <p>
           We understand that your 3D models often represent patent-pending hardware inventions, trade secrets, or unreleased consumer products.
         </p>
-        <div className="p-4 rounded-xl bg-[#faf9f5] border border-black/[0.08] text-xs space-y-1.5 my-2">
-          <p className="font-bold text-ink">Our Core Security Commitment to Studio Clients:</p>
+        <div className="p-5 rounded-2xl bg-soft/50 border border-line text-sm space-y-2 my-3">
+          <p className="font-semibold text-ink">Our Core Security Commitment to Studio Clients:</p>
           <p className="text-muted">✓ We NEVER sell, license, or monetize your custom CAD files, blueprints, or proprietary meshes to third parties.</p>
           <p className="text-muted">✓ All uploaded project files are stored in access-restricted, encrypted cloud environments accessible only by assigned engineers.</p>
           <p className="text-muted">✓ We are glad to countersign your corporate mutual Non-Disclosure Agreement (NDA) prior to receiving sensitive CAD packages.</p>
@@ -188,7 +188,7 @@ const PRIVACY_SECTIONS: LegalSection[] = [
           <li><strong>Right to Object / Opt-Out:</strong> Object to processing based on legitimate interests or opt-out of marketing communications at any time.</li>
         </ul>
         <p>
-          To exercise any of these rights, email our privacy desk at <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-2 hover:text-black">{STUDIO.email}</a>. We respond to all verified requests within 30 days.
+          To exercise any of these rights, email our privacy desk at <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-4 hover:text-muted">{STUDIO.email}</a>. We respond to all verified requests within 30 days.
         </p>
       </>
     ),
@@ -203,7 +203,7 @@ const PRIVACY_SECTIONS: LegalSection[] = [
           Our website uses minimal, privacy-friendly storage technologies:
         </p>
         <ul className="list-disc pl-5 space-y-2 mt-2">
-          <li><strong>Essential Functional Storage:</strong> We use browser LocalStorage strictly to remember your chosen visual theme across page visits.</li>
+          <li><strong>Essential Functional Storage:</strong> We use browser LocalStorage strictly to remember your chosen visual preferences across page visits.</li>
           <li><strong>No Third-Party Advertising Trackers:</strong> We do not use intrusive cross-site tracking cookies, behavioral ad pixels, or third-party data brokers.</li>
         </ul>
       </>
@@ -221,10 +221,10 @@ const PRIVACY_SECTIONS: LegalSection[] = [
         <p>
           For questions, privacy inquiries, or data access requests, please contact our designated privacy officer:
         </p>
-        <div className="p-4 rounded-xl bg-[#faf9f5] border border-black/[0.08] text-xs font-mono mt-3">
+        <div className="p-5 rounded-2xl bg-soft/50 border border-line text-xs font-mono mt-3">
           <strong>{STUDIO.legalName || STUDIO.name}</strong><br />
           Data Protection &amp; Privacy Officer<br />
-          Email: <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-2 hover:text-black">{STUDIO.email}</a><br />
+          Email: <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-4 hover:text-muted">{STUDIO.email}</a><br />
           Address: {STUDIO.address}
         </div>
       </>
@@ -235,8 +235,8 @@ const PRIVACY_SECTIONS: LegalSection[] = [
 export default function PrivacyPage() {
   return (
     <LegalDocViewer
-      title="Privacy Policy"
-      subtitle="data protection"
+      title="Privacy"
+      italicTitle="policy."
       lastUpdated="March 2026"
       effectiveDate="January 1, 2026"
       version="v2.4"

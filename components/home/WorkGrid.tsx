@@ -13,7 +13,7 @@ function ProjectCard({ project }: { project: Project }) {
         <img
           src={project.image}
           alt={project.title}
-          className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105"
+          className="h-full w-full object-fit transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105"
         />
         <span className="absolute left-5 top-5 rounded-full bg-white/90 px-3.5 py-1.5 text-xs font-medium backdrop-blur">
           {project.status}
@@ -52,7 +52,7 @@ export function WorkGrid() {
             Selected <span className="font-serif font-normal italic">work</span>
           </span>
         </LineReveal>
-        <span className="pb-3 text-muted">({String(PROJECTS.length).padStart(2, "0")})</span>
+        {/* <span className="pb-3 text-muted">({String(PROJECTS.length).padStart(2, "0")})</span> */}
       </div>
 
       <div className="mt-16 grid gap-16 md:mt-24 md:grid-cols-2 md:gap-x-10 lg:gap-x-16">

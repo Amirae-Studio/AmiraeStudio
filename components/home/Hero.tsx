@@ -1,9 +1,83 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { LineReveal, Reveal } from "@/components/site/Reveal";
 import { PillButton } from "@/components/site/PillButton";
+
+const CAPSULE_IMAGES = [
+  "/f1.jpg",
+  "/f2.jpg",
+  "/f4.jpg",
+  "/f5.jpg",
+  "/paris-frame.jpg",
+  "/london-preview.jpg",
+  "/f3.jpg",
+  "/f1.jpg",
+];
+
+function HeroImageCapsule() {
+  const [index, setIndex] = useState(0);
+  const [isFastCycling, setIsFastCycling] = useState(true);
+
+  // Preload all capsule images on mount
+  useEffect(() => {
+    CAPSULE_IMAGES.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
+  // Phase 1: Rapid 1 full round through all images on initial page load
+  useEffect(() => {
+    if (!isFastCycling) return;
+
+    let step = 0;
+    const totalSteps = CAPSULE_IMAGES.length; // Exactly 1 full cycle of all images
+
+    const interval = setInterval(() => {
+      step++;
+      setIndex((prev) => (prev + 1) % CAPSULE_IMAGES.length);
+      if (step >= totalSteps) {
+        clearInterval(interval);
+        setIsFastCycling(false);
+      }
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, [isFastCycling]);
+
+  // Phase 2: Steady, smooth slow fade-in / fade-out carousel
+  useEffect(() => {
+    if (isFastCycling) return;
+
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % CAPSULE_IMAGES.length);
+    }, 2800);
+
+    return () => clearInterval(timer);
+  }, [isFastCycling]);
+
+  return (
+    <span className="relative inline-block h-[0.72em] w-[1.6em] shrink-0 overflow-hidden rounded-full bg-soft shadow-inner align-middle">
+      <AnimatePresence mode="popLayout">
+        <motion.img
+          key={index}
+          src={CAPSULE_IMAGES[index]}
+          alt="Amirae 3D Design work preview"
+          initial={{ opacity: 0, scale: isFastCycling ? 1 : 1.12 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: isFastCycling ? 1 : 0.94 }}
+          transition={{
+            duration: isFastCycling ? 0.06 : 0.85,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </AnimatePresence>
+    </span>
+  );
+}
 
 export function Hero() {
   const reelRef = useRef<HTMLDivElement>(null);
@@ -21,9 +95,7 @@ export function Hero() {
           <span>We shape</span>
           <span className="flex items-center gap-[0.18em]">
             ideas
-            <span className="inline-block h-[0.72em] w-[1.6em] shrink-0 overflow-hidden rounded-full bg-soft">
-              <img src="/f3.jpg" alt="" className="h-full w-full object-cover" />
-            </span>
+            <HeroImageCapsule />
             into
           </span>
           <span className="font-serif font-normal italic tracking-[-0.02em]">objects.</span>

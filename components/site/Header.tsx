@@ -53,9 +53,19 @@ export function Header() {
     <>
       <header className="absolute inset-x-0 top-0 z-40">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-6 sm:px-10 md:py-8">
-          <Link href="/" className="flex items-center gap-3" aria-label="Amirae Studio home">
-            <img src={STUDIO.logo} alt="" className="h-9 w-auto md:h-10" />
-            <span className="text-lg font-semibold tracking-tight">amirae</span>
+          <Link href="/" className="group relative flex items-center" aria-label="Amirae Studio home">
+            <div className="relative flex h-15 w-auto items-center">
+              <img
+                src={STUDIO.logo}
+                alt="Amirae Studio"
+                className="h-15 w-auto object-contain transition-all duration-300 ease-out group-hover:scale-95 group-hover:opacity-0"
+              />
+              <img
+                src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/brand/amirae_studio_logo-removebg-preview.webp"
+                alt="Amirae Studio Alternate"
+                className="absolute inset-0 h-15 w-auto object-contain opacity-0 scale-95 transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100"
+              />
+            </div>
           </Link>
 
           <nav className="hidden items-center gap-9 text-[15px] lg:flex" aria-label="Primary">

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { STUDIO } from "@/lib/content";
 import { Magnetic } from "@/components/site/Magnetic";
 
-const WEB3FORMS_KEY = "e52fdb81-d925-4fa7-97a3-f37c9bf6032a";
+const WEB3FORMS_KEY = "1643a366-13f9-403b-ae3d-09fb6f0c868a";
 
 const SERVICE_OPTIONS = [
   "3D modeling",

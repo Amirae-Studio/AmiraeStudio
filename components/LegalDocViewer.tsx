@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { LineReveal, Reveal } from "@/components/site/Reveal";
+import { PillButton } from "@/components/site/PillButton";
 import { 
   ShieldCheck, 
   FileText, 
@@ -13,7 +15,6 @@ import {
   ArrowUp, 
   Check, 
   Copy,
-  ArrowRight,
   ListOrdered
 } from "lucide-react";
 import { STUDIO } from "@/lib/content";
@@ -27,7 +28,7 @@ export interface LegalSection {
 
 interface LegalDocViewerProps {
   title: string;
-  subtitle?: string;
+  italicTitle?: string;
   lastUpdated: string;
   effectiveDate: string;
   version: string;
@@ -42,7 +43,7 @@ interface LegalDocViewerProps {
 
 export function LegalDocViewer({
   title,
-  subtitle,
+  italicTitle,
   lastUpdated,
   effectiveDate,
   version,
@@ -64,7 +65,7 @@ export function LegalDocViewer({
       }
 
       // Determine active section based on scroll position
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 220;
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i].id);
         if (section && section.offsetTop <= scrollPosition) {
@@ -96,97 +97,99 @@ export function LegalDocViewer({
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f6f2] text-ink flex flex-col font-sans selection:bg-ink selection:text-white">
+    <div className="min-h-screen bg-white text-ink flex flex-col font-sans selection:bg-ink selection:text-white">
       <Header />
 
-      {/* Subtle Top Reading Progress Indicator */}
+      {/* Reading Progress Indicator */}
       <div 
         className="fixed top-0 left-0 h-[2px] bg-ink z-50 transition-all duration-150 ease-out"
         style={{ width: `${scrollProgress}%` }}
         aria-hidden="true"
       />
 
-      {/* Hero Section matching the site's editorial typography */}
-      <section className="relative mx-auto max-w-[1600px] w-full px-5 pt-36 pb-16 sm:px-10 md:pt-44 md:pb-20 border-b border-black/[0.08]">
-        {/* Breadcrumb */}
-        <div className="flex flex-wrap items-center gap-2 text-xs font-mono tracking-wider text-muted uppercase mb-8">
-          <Link href="/" className="hover:text-ink transition-colors">
-            Home
-          </Link>
-          <ChevronRight size={12} className="text-black/30" />
-          <span className="text-black/40">Governance</span>
-          <ChevronRight size={12} className="text-black/30" />
-          <span className="text-ink font-semibold">{title}</span>
-        </div>
+      {/* Hero Section matching the Home/About PageHero design */}
+      <section className="mx-auto max-w-[1600px] w-full px-5 pt-36 pb-16 sm:px-10 md:pt-48 md:pb-24 border-b border-line">
+        <Reveal>
+          <div className="mb-6 flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted">
+            <Link href="/" className="hover:text-ink transition-colors">
+              Home
+            </Link>
+            <ChevronRight size={12} className="text-muted/50" />
+            <span className="text-muted/60">Governance</span>
+            <ChevronRight size={12} className="text-muted/50" />
+            <span className="text-ink font-semibold">{title}</span>
+          </div>
+        </Reveal>
 
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end justify-between">
-          <div className="lg:col-span-8">
-            <p className="mb-6 flex items-center gap-3 text-[14px] text-muted font-medium">
-              <span className="h-2 w-2 rounded-full bg-ink" />
-              {STUDIO.legalName || STUDIO.name} Governance
-            </p>
-            <h1 className="text-[10vw] sm:text-[7vw] lg:text-[76px] font-medium leading-[0.98] tracking-[-0.04em] text-ink">
-              <span>{title}</span>
-              {subtitle && (
-                <>
-                  {" "}
-                  <span className="font-serif font-normal italic text-black/70">
-                    {subtitle}
-                  </span>
-                </>
-              )}
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg sm:text-xl text-muted leading-relaxed font-normal">
+        <Reveal>
+          <p className="mb-6 flex items-center gap-3 text-[15px] text-muted">
+            <span className="h-2 w-2 rounded-full bg-accent" />
+            {STUDIO.legalName || STUDIO.name} Legal Desk
+          </p>
+        </Reveal>
+
+        <LineReveal
+          as="h1"
+          className="text-[12vw] font-medium leading-[0.95] tracking-[-0.05em] sm:text-[9vw] xl:text-[116px]"
+        >
+          <span>{title}</span>
+          {italicTitle && (
+            <span className="font-serif font-normal italic tracking-[-0.02em] block sm:inline">
+              {" "}{italicTitle}
+            </span>
+          )}
+        </LineReveal>
+
+        <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:items-end justify-between">
+          <Reveal delay={0.2} className="md:col-span-7">
+            <p className="text-lg leading-relaxed text-muted md:text-xl font-normal">
               {description}
             </p>
-          </div>
+          </Reveal>
 
-          {/* Metadata Badges Box */}
-          <div className="lg:col-span-4 flex flex-wrap sm:flex-nowrap gap-3 p-4 rounded-2xl bg-white border border-black/[0.08] shadow-xs text-xs font-mono">
-            <div className="flex-1 min-w-[100px] p-3 rounded-xl bg-[#faf9f5] border border-black/[0.04]">
-              <span className="text-black/40 block text-[10px] uppercase tracking-wider">Effective</span>
-              <span className="font-semibold text-ink mt-0.5 block">{effectiveDate}</span>
-            </div>
-            <div className="flex-1 min-w-[100px] p-3 rounded-xl bg-[#faf9f5] border border-black/[0.04]">
-              <span className="text-black/40 block text-[10px] uppercase tracking-wider">Updated</span>
-              <span className="font-semibold text-ink mt-0.5 block">{lastUpdated}</span>
-            </div>
-            <div className="flex-1 min-w-[100px] p-3 rounded-xl bg-[#faf9f5] border border-black/[0.04]">
-              <span className="text-black/40 block text-[10px] uppercase tracking-wider">Version</span>
-              <span className="font-semibold text-ink mt-0.5 block">{version}</span>
-            </div>
-          </div>
+          {/* Metadata Badges in clean home pill style */}
+          <Reveal delay={0.3} className="md:col-span-5 flex flex-wrap gap-2.5 md:justify-end">
+            <span className="rounded-full border border-line bg-white px-4 py-2 text-xs font-mono text-muted">
+              Effective: <strong className="text-ink font-semibold">{effectiveDate}</strong>
+            </span>
+            <span className="rounded-full border border-line bg-white px-4 py-2 text-xs font-mono text-muted">
+              Updated: <strong className="text-ink font-semibold">{lastUpdated}</strong>
+            </span>
+            <span className="rounded-full border border-line bg-white px-4 py-2 text-xs font-mono text-muted">
+              Version: <strong className="text-ink font-semibold">{version}</strong>
+            </span>
+          </Reveal>
         </div>
       </section>
 
-      {/* Main Content Layout */}
-      <div className="mx-auto max-w-[1600px] w-full px-5 sm:px-10 py-12 lg:py-16 grow">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      {/* Main Two-Column Layout */}
+      <div className="mx-auto max-w-[1600px] w-full px-5 sm:px-10 py-16 md:py-24 grow">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* ══════════════════════════════════════════════════════════════════════
-              LEFT: Scrollable Content Column
+              LEFT: Main Content Sections
              ══════════════════════════════════════════════════════════════════════ */}
-          <main className="lg:col-span-8 space-y-12 bg-white p-6 sm:p-10 md:p-14 rounded-3xl border border-black/[0.08] shadow-xs">
+          <main className="lg:col-span-8 space-y-16">
             
-            {/* Quick Summary / Advisory Box */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-[#f5f4ef] border border-black/[0.08] text-ink">
+            {/* Quick Summary Box in clean subtle border */}
+            <div className="rounded-3xl border border-line bg-soft/50 p-7 sm:p-9 text-ink">
               <div className="flex items-start gap-4">
-                <div className="p-2.5 rounded-xl bg-ink text-white shrink-0 mt-0.5">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink text-white">
                   <FileText size={18} />
                 </div>
                 <div className="space-y-2">
                   <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-ink">
                     Summary &amp; Applicability Notice
                   </h2>
-                  <p className="text-sm text-muted leading-relaxed">
-                    This document sets forth the binding legal provisions between you (whether an individual, client, or enterprise) and <strong>{STUDIO.legalName || STUDIO.name}</strong>. Please review each section carefully. For questions or commercial NDA requests, contact our legal desk at <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-2 hover:text-black">{STUDIO.email}</a>.
+                  <p className="text-[15px] leading-relaxed text-muted">
+                    This document sets forth the binding legal provisions between you (whether an individual or commercial enterprise) and <strong>{STUDIO.legalName || STUDIO.name}</strong>. For inquiries or bilateral NDA execution, contact our legal desk at <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-4 hover:text-muted">{STUDIO.email}</a>.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Mobile Table of Contents Accordion / Dropdown */}
-            <div className="lg:hidden p-4 rounded-2xl bg-[#f5f4ef] border border-black/[0.08]">
+            {/* Mobile Table of Contents Accordion */}
+            <div className="lg:hidden rounded-2xl border border-line bg-soft/60 p-4">
               <div className="flex items-center gap-2 mb-3 text-xs font-mono font-bold uppercase tracking-wider text-ink">
                 <ListOrdered size={16} />
                 <span>Jump to Section</span>
@@ -194,7 +197,7 @@ export function LegalDocViewer({
               <select
                 value={activeSection}
                 onChange={(e) => scrollToSection(e.target.value)}
-                className="w-full p-3 rounded-xl border border-black/15 bg-white text-xs font-medium text-ink focus:outline-none focus:ring-2 focus:ring-ink cursor-pointer"
+                className="w-full rounded-xl border border-line bg-white p-3 text-sm font-medium text-ink focus:outline-none focus:ring-2 focus:ring-ink cursor-pointer"
               >
                 {sections.map((section) => (
                   <option key={section.id} value={section.id}>
@@ -204,45 +207,45 @@ export function LegalDocViewer({
               </select>
             </div>
 
-            {/* Legal Sections */}
-            <div className="space-y-16 divide-y divide-black/[0.08]">
+            {/* Legal Sections with clean home dividers */}
+            <div className="space-y-16 divide-y divide-line">
               {sections.map((section, idx) => (
                 <section
                   key={section.id}
                   id={section.id}
-                  className={`scroll-mt-36 ${idx > 0 ? "pt-14" : ""}`}
+                  className={`scroll-mt-36 ${idx > 0 ? "pt-16" : ""}`}
                 >
-                  <div className="flex items-start gap-3.5 sm:gap-4 mb-5">
-                    <span className="flex items-center justify-center w-8 h-8 rounded-xl bg-[#f5f4ef] border border-black/[0.08] text-ink font-mono font-bold text-xs shrink-0 mt-0.5">
-                      {section.number}
-                    </span>
-                    <h2 className="text-xl sm:text-2xl md:text-[26px] font-medium tracking-tight text-ink">
+                  <div className="flex items-baseline gap-4 mb-6">
+                    <span className="text-sm font-mono text-muted">{section.number}</span>
+                    <h2 className="text-2xl sm:text-4xl font-medium tracking-[-0.03em] text-ink">
                       {section.title}
                     </h2>
                   </div>
 
-                  <div className="text-sm sm:text-[15.5px] text-muted leading-relaxed pl-0 sm:pl-12 space-y-4 font-normal">
+                  <div className="text-[16px] sm:text-[17px] text-muted leading-relaxed pl-0 sm:pl-9 space-y-4 font-normal">
                     {section.content}
                   </div>
                 </section>
               ))}
             </div>
 
-            {/* Studio Legal Entity Verification Box */}
-            <div className="mt-14 pt-10 border-t border-black/[0.08]">
-              <div className="rounded-2xl bg-ink text-white p-7 sm:p-9 relative overflow-hidden">
+            {/* Legal Entity Desk Card matching the Footer style */}
+            <div className="pt-10 border-t border-line">
+              <div className="rounded-3xl bg-ink text-white p-8 sm:p-12 relative overflow-hidden">
                 <div className="relative z-10 space-y-4">
-                  <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-white/60">
+                  <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-white/50">
                     <ShieldCheck size={14} className="text-white" />
-                    <span>{STUDIO.legalName || STUDIO.name} Governance</span>
+                    <span>{STUDIO.legalName || STUDIO.name} Legal Desk</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-medium text-white tracking-tight">Have Questions About This Policy?</h3>
-                  <p className="text-sm text-white/70 leading-relaxed max-w-xl">
-                    Our compliance and management desk is available to assist you with commercial contracts, custom Non-Disclosure Agreements (NDAs), and data requests.
+                  <h3 className="text-2xl sm:text-3xl font-medium text-white tracking-tight">
+                    Have questions about this policy?
+                  </h3>
+                  <p className="text-[15px] text-white/70 leading-relaxed max-w-xl">
+                    Our compliance team is available to assist you with commercial master service agreements, custom NDAs, and data requests.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 text-xs font-mono">
-                    <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white/10 border border-white/10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-4 text-xs font-mono">
+                    <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/10 border border-white/10">
                       <Mail size={16} className="text-white shrink-0" />
                       <div className="truncate">
                         <span className="text-white/40 block text-[10px]">Email Legal Desk</span>
@@ -252,10 +255,10 @@ export function LegalDocViewer({
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/10 border border-white/10">
+                    <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/10 border border-white/10">
                       <MapPin size={16} className="text-white shrink-0 mt-0.5" />
                       <div>
-                        <span className="text-white/40 block text-[10px]">Registered Entity Address</span>
+                        <span className="text-white/40 block text-[10px]">Registered Entity Office</span>
                         <span className="text-white/90 text-xs leading-snug">
                           {STUDIO.address}
                         </span>
@@ -270,43 +273,43 @@ export function LegalDocViewer({
 
 
           {/* ══════════════════════════════════════════════════════════════════════
-              RIGHT: Sticky Table of Contents Sidebar (Full list without internal scroll)
+              RIGHT: Sticky Table of Contents Sidebar (Full list — No scrollbar)
              ══════════════════════════════════════════════════════════════════════ */}
-          <aside className="hidden lg:block lg:col-span-4 sticky top-28 space-y-5">
+          <aside className="hidden lg:block lg:col-span-4 sticky top-28 space-y-6">
             
-            {/* Table of Contents Card (FULL LIST — NO SCROLLBAR) */}
-            <div className="p-6 rounded-3xl bg-white border border-black/[0.08] shadow-xs">
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-black/[0.08]">
+            {/* Table of Contents Card */}
+            <div className="rounded-3xl border border-line bg-white p-6 shadow-xs">
+              <div className="flex items-center justify-between pb-4 mb-3 border-b border-line">
                 <div className="flex items-center gap-2">
                   <ListOrdered size={16} className="text-ink" />
                   <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-ink">
                     Contents
                   </h2>
                 </div>
-                <span className="text-[11px] font-mono text-muted font-medium">
+                <span className="text-xs font-mono text-muted">
                   {sections.length} Sections
                 </span>
               </div>
 
               {/* Full un-scrolled list showing ALL items directly */}
-              <nav className="space-y-1 text-xs">
+              <nav className="space-y-1">
                 {sections.map((section) => {
                   const isActive = activeSection === section.id;
                   return (
                     <button
                       key={section.id}
                       onClick={() => scrollToSection(section.id)}
-                      className={`w-full text-left px-3 py-2 rounded-xl transition-all flex items-center justify-between group cursor-pointer ${
+                      className={`w-full text-left px-3.5 py-2.5 rounded-full transition-all flex items-center justify-between group cursor-pointer text-sm ${
                         isActive
-                          ? "bg-ink text-white font-semibold shadow-xs"
-                          : "text-muted hover:text-ink hover:bg-black/5 font-medium"
+                          ? "bg-ink text-white font-medium shadow-xs"
+                          : "text-muted hover:text-ink hover:bg-soft"
                       }`}
                     >
-                      <div className="flex items-start gap-2.5 min-w-0 pr-1 py-0.5">
-                        <span className={`font-mono text-[11px] shrink-0 mt-0.5 ${isActive ? "text-white/70" : "text-black/30 group-hover:text-black/60"}`}>
+                      <div className="flex items-center gap-2.5 min-w-0 pr-1">
+                        <span className={`font-mono text-xs shrink-0 ${isActive ? "text-white/70" : "text-muted/60 group-hover:text-ink"}`}>
                           {section.number}.
                         </span>
-                        <span className="text-[12px] leading-snug text-left">{section.title}</span>
+                        <span className="text-[13px] truncate text-left">{section.title}</span>
                       </div>
                     </button>
                   );
@@ -314,10 +317,10 @@ export function LegalDocViewer({
               </nav>
 
               {/* Bottom Quick Action: Copy Email / Back to Top */}
-              <div className="pt-4 mt-4 border-t border-black/[0.08] flex items-center justify-between">
+              <div className="pt-4 mt-3 border-t border-line flex items-center justify-between">
                 <button
                   onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-1.5 text-[11px] font-mono text-muted hover:text-ink font-medium transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono text-muted hover:text-ink font-medium transition-colors cursor-pointer"
                 >
                   {copiedEmail ? (
                     <>
@@ -334,7 +337,7 @@ export function LegalDocViewer({
 
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="inline-flex items-center gap-1 text-[11px] font-mono text-muted hover:text-ink transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-muted hover:text-ink transition-colors cursor-pointer"
                 >
                   <span>Top</span>
                   <ArrowUp size={12} />
@@ -343,22 +346,21 @@ export function LegalDocViewer({
             </div>
 
             {/* Related Legal Document Card */}
-            <div className="p-5 rounded-2xl bg-white border border-black/[0.08] flex items-center justify-between gap-3 shadow-xs">
+            <div className="rounded-3xl border border-line bg-white p-6 shadow-xs flex flex-col gap-4">
               <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-muted block">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-muted block">
                   Related Document
                 </span>
-                <h4 className="text-xs font-semibold text-ink mt-0.5">
+                <h4 className="text-lg font-medium text-ink mt-1">
                   {relatedDoc.title}
                 </h4>
+                <p className="text-xs text-muted leading-relaxed mt-1">
+                  {relatedDoc.description}
+                </p>
               </div>
-              <Link
-                href={relatedDoc.href}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-ink text-white font-mono text-[11px] font-medium hover:bg-black/80 transition-all shrink-0"
-              >
-                <span>Read</span>
-                <ArrowRight size={11} />
-              </Link>
+              <PillButton href={relatedDoc.href} variant="outline" size="md">
+                Read document →
+              </PillButton>
             </div>
 
           </aside>

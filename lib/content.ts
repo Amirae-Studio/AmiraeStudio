@@ -4,8 +4,8 @@ export const STUDIO = {
   name: "Amirae Studio",
   legalName: "AMIRAE STUDIO LLC",
   email: "contact@amirae.studio",
-  address: "Thirunagar, Madurai, Tamil Nadu 625006, India",
-  logo: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/brand/amirae_studio_logo-removebg-preview.webp",
+  address: "30 N Gould St Ste R Sheridan, WY 82801",
+  logo: "/logo2.png",
   makerworld:
     "https://makerworld.com/en/crowdfunding/313-framecity-high-detailed-cities-in-frames",
   socials: [
@@ -50,7 +50,7 @@ export const PROJECTS: Project[] = [
   {
     id: "02",
     title: "Maze Foundry",
-    status: "Live — Jun 2026",
+    status: "Upcoming",
     summary: "A modular marble-maze builder you can print",
     desc: "Design your own path by combining crafted modular pieces. Shape every twist, turn and obstacle, preview it in 3D and export a ready-to-print masterpiece.",
     tags: ["Web 3D", "3D Printing"],
@@ -75,7 +75,7 @@ export const PROJECTS: Project[] = [
     summary: "Monuments and towers as printable scale models",
     desc: "Iconic buildings and timeless towers, each hand-crafted by 3D artists to capture proportion, silhouette and façade detail in a printable model.",
     tags: ["Architecture", "3D Models"],
-    image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=80&w=1400",
+    image: "/heri.png",
     tint: "#dfe6f0",
   },
   {
@@ -210,7 +210,7 @@ export const PROCESS = [
   {
     step: "03",
     title: "Prototype & QA",
-    desc: "For physical work we slice, test-print and check tolerances to guarantee mechanical integrity.",
+    desc: "For testing work we slice, test-print and check tolerances to guarantee mechanical integrity.",
   },
   {
     step: "04",
@@ -221,7 +221,7 @@ export const PROCESS = [
 
 export const STATS = [
   { value: "10+", label: "Years of hands-on 3D & engineering experience" },
-  { value: "$1.7k+", label: "Crowdfunded for FrameCity on MakerWorld" },
+  { value: "$17k+", label: "Crowdfunded for FrameCity on MakerWorld" },
   { value: "100%", label: "Commercial IP transferred to clients" },
   { value: "24h", label: "Response time on every inquiry" },
 ];

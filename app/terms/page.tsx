@@ -27,7 +27,7 @@ const TERMS_SECTIONS: LegalSection[] = [
           These Terms &amp; Conditions (&quot;Terms&quot;, &quot;Agreement&quot;) constitute a legally binding agreement between you (whether an individual, commercial entity, or enterprise, hereinafter referred to as &quot;Client&quot;, &quot;you&quot;, or &quot;your&quot;) and <strong>{STUDIO.legalName || STUDIO.name}</strong> (&quot;Company&quot;, &quot;Amirae Studio&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), operating globally with registration and administrative offices at {STUDIO.address}.
         </p>
         <p>
-          By accessing our website (<a href="https://www.amirae.studio" className="text-ink font-semibold underline underline-offset-2 hover:text-black">amirae.studio</a>), commissioning bespoke 3D design work, purchasing physical prints or CAD files, or executing a Statement of Work (&quot;SOW&quot;), you acknowledge that you have read, understood, and agreed to be bound by these Terms in full. If you are entering into this Agreement on behalf of a company, you represent that you possess the legal authority to bind that entity.
+          By accessing our website (<a href="https://www.amirae.studio" className="text-ink font-semibold underline underline-offset-4 hover:text-muted">amirae.studio</a>), commissioning bespoke 3D design work, purchasing physical prints or CAD files, or executing a Statement of Work (&quot;SOW&quot;), you acknowledge that you have read, understood, and agreed to be bound by these Terms in full. If you are entering into this Agreement on behalf of a company, you represent that you possess the legal authority to bind that entity.
         </p>
       </>
     ),
@@ -64,13 +64,13 @@ const TERMS_SECTIONS: LegalSection[] = [
           Unless explicitly agreed otherwise in a signed SOW, all bespoke commissions operate on a milestone-based payment structure:
         </p>
         <div className="grid sm:grid-cols-2 gap-3 my-3">
-          <div className="p-4 rounded-xl bg-[#faf9f5] border border-black/[0.08]">
+          <div className="p-5 rounded-2xl bg-soft/50 border border-line">
             <span className="text-xs font-mono font-bold text-ink block uppercase">Milestone 1 · Kickoff</span>
-            <p className="text-xs text-muted mt-1 font-normal leading-relaxed">50% upfront deposit upon contract approval to initiate concept modeling and allocate studio resources.</p>
+            <p className="text-sm text-muted mt-1 leading-relaxed font-normal">50% upfront deposit upon contract approval to initiate concept modeling and allocate studio resources.</p>
           </div>
-          <div className="p-4 rounded-xl bg-[#faf9f5] border border-black/[0.08]">
+          <div className="p-5 rounded-2xl bg-soft/50 border border-line">
             <span className="text-xs font-mono font-bold text-ink block uppercase">Milestone 2 · Handover</span>
-            <p className="text-xs text-muted mt-1 font-normal leading-relaxed">50% final balance upon review approval, prior to dispatch of unlocked high-res CAD archives or physical shipping.</p>
+            <p className="text-sm text-muted mt-1 leading-relaxed font-normal">50% final balance upon review approval, prior to dispatch of unlocked high-res CAD archives or physical shipping.</p>
           </div>
         </div>
         <p>
@@ -122,7 +122,7 @@ const TERMS_SECTIONS: LegalSection[] = [
         <p>
           Digital assets are delivered via encrypted cloud download links upon final milestone settlement. We deliver in industry-standard formats specified in the project SOW, including:
         </p>
-        <p className="font-mono text-xs p-4 rounded-xl bg-[#faf9f5] border border-black/[0.08] text-ink leading-relaxed">
+        <p className="font-mono text-xs p-5 rounded-2xl bg-soft/50 border border-line text-ink leading-relaxed">
           Parametric / CAD: .STEP, .IGES, .SLDPRT, .DWG<br />
           Mesh / Polygon: .STL, .OBJ, .FBX, .GLTF, .USDZ, .BLEND<br />
           Textures: 4K / 8K PNG, EXR, TIFF (PBR roughness/metallic workflow)
@@ -274,10 +274,10 @@ const TERMS_SECTIONS: LegalSection[] = [
         <p>
           In the event of any dispute or controversy, the parties agree to first attempt resolution through amicable good-faith informal negotiations for a period of at least 30 calendar days. If unresolved, disputes shall be submitted to binding arbitration or competent courts.
         </p>
-        <div className="p-4 rounded-xl bg-[#faf9f5] border border-black/[0.08] text-xs font-mono mt-3">
+        <div className="p-5 rounded-2xl bg-soft/50 border border-line text-xs font-mono mt-3">
           <strong>{STUDIO.legalName || STUDIO.name}</strong><br />
           Legal Affairs &amp; Contracts Desk<br />
-          Email: <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-2 hover:text-black">{STUDIO.email}</a><br />
+          Email: <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-4 hover:text-muted">{STUDIO.email}</a><br />
           Address: {STUDIO.address}
         </div>
       </>
@@ -288,17 +288,17 @@ const TERMS_SECTIONS: LegalSection[] = [
 export default function TermsPage() {
   return (
     <LegalDocViewer
-      title="Terms &amp; Conditions"
-      subtitle="commercial governance"
+      title="Terms &amp; conditions. "
+      italicTitle=""
       lastUpdated="March 2026"
       effectiveDate="January 1, 2026"
       version="v2.4"
-      description="Comprehensive commercial terms, milestone payment structures, intellectual property transfer rights, physical fabrication tolerances, and global shipping policies for AMIRAE STUDIO LLC."
+      description="Commercial milestone billing, intellectual property assignment, digital CAD delivery, and precision physical fabrication policies for AMIRAE STUDIO LLC."
       sections={TERMS_SECTIONS}
       relatedDoc={{
         title: "Privacy Policy",
         href: "/privacy",
-        description: "Learn how we collect, protect, and handle client confidential CAD data and personal info.",
+        description: "Learn how we protect client confidential CAD data, reference blueprints, and personal records.",
       }}
     />
   );
