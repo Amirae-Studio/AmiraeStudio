@@ -7,6 +7,40 @@ import { LineReveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
 import { PillButton } from "./PillButton";
 
+const FOOTER_COLUMNS = [
+  {
+    title: "Services",
+    links: [
+      { name: "All services", href: "/services" },
+      { name: "3D modeling & assets", href: "/services#3d-modeling" },
+      { name: "Product prototyping", href: "/services#product-design" },
+      { name: "3D printing", href: "/services#3d-printing" },
+      { name: "Architecture & heritage", href: "/services#architectural" },
+      { name: "Interactive 3D web", href: "/services#digital-ecosystems" },
+    ],
+  },
+  {
+    title: "Work",
+    links: [
+      { name: "FrameCity", href: "https://frame-city.vercel.app/" },
+      { name: "FrameCity on MakerWorld", href: STUDIO.makerworld },
+      { name: "Maze Foundry", href: "https://maze-foundry.vercel.app/" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { name: "About us", href: "/about" },
+      { name: "Terms & Conditions", href: "/terms" },
+      { name: "Privacy Policy", href: "/privacy" },
+      { name: "Request a quote", href: "/contact" },
+      { name: "Revenue & pricing model", href: "/services#revenue-model" },
+      { name: "U.S. & global operations", href: "/services#us-operations" },
+      { name: "Contact", href: "/contact" },
+    ],
+  },
+];
+
 export function Footer() {
   const pathname = usePathname();
   const showCta = pathname !== "/contact";
@@ -49,45 +83,88 @@ export function Footer() {
           </div>
         )}
 
-        <div className="grid gap-12 py-16 text-[15px] md:grid-cols-12">
-          <div className="md:col-span-5">
+        <div className="grid gap-12 py-16 text-[15px] md:grid-cols-12 lg:gap-14">
+          <div className="md:col-span-4 space-y-4">
             <p className="text-sm text-white/40">Studio</p>
-            <p className="mt-3 max-w-sm leading-relaxed text-white/80">
-              {STUDIO.legalName} — 3D modeling, prototyping, fabrication and interactive 3D web for brands and makers
-              worldwide.
+            <p className="max-w-sm leading-relaxed text-white/80">
+              {STUDIO.legalName || STUDIO.name} — 3D modeling, prototyping, fabrication and interactive 3D web for brands and makers worldwide.
             </p>
-            <p className="mt-4 text-white/50">{STUDIO.address}</p>
+            
+            <dl className="grid gap-1.5 text-[13px] text-white/60 pt-2">
+              <div>
+                <dt className="inline text-white/40 font-mono text-[11px] uppercase tracking-wider">Entity · </dt>
+                <dd className="inline font-medium text-white/90">{STUDIO.legalName || STUDIO.name}</dd>
+              </div>
+              <div>
+                <dt className="inline text-white/40 font-mono text-[11px] uppercase tracking-wider">Email · </dt>
+                <dd className="inline">
+                  <a href={`mailto:${STUDIO.email}`} className="link-line text-white/90">{STUDIO.email}</a>
+                </dd>
+              </div>
+              <div>
+                <dt className="inline text-white/40 font-mono text-[11px] uppercase tracking-wider">Address · </dt>
+                <dd className="inline text-white/70">{STUDIO.address}</dd>
+              </div>
+            </dl>
           </div>
-          <div className="md:col-span-3">
-            <p className="text-sm text-white/40">Pages</p>
-            <ul className="mt-3 space-y-2">
-              {NAV_LINKS.map((l) => (
-                <li key={l.name}>
-                  <Link href={l.href} className="link-line">
-                    {l.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="md:col-span-4">
-            <p className="text-sm text-white/40">Follow</p>
-            <ul className="mt-3 space-y-2">
-              {STUDIO.socials.map((s) => (
-                <li key={s.name}>
-                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="link-line">
-                    {s.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+
+          <div className="md:col-span-8 grid grid-cols-2 gap-8 sm:grid-cols-4">
+            {FOOTER_COLUMNS.map((col) => (
+              <div key={col.title}>
+                <p className="text-sm text-white/40">{col.title}</p>
+                <ul className="mt-3 space-y-2.5">
+                  {col.links.map((link) => {
+                    const isExternal = link.href.startsWith("http");
+                    return (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noopener noreferrer" : undefined}
+                          className="link-line text-sm text-white/70 hover:text-white"
+                        >
+                          {link.name}
+                          {isExternal && " ↗"}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+
+            <div>
+              <p className="text-sm text-white/40">Follow</p>
+              <ul className="mt-3 space-y-2.5">
+                {STUDIO.socials?.map((s) => (
+                  <li key={s.name}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-line text-sm text-white/70 hover:text-white"
+                    >
+                      {s.name} ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-white/10 py-8 text-sm text-white/40 sm:flex-row sm:justify-between">
-          <span>
-            © {new Date().getFullYear()} {STUDIO.legalName}. All rights reserved.
-          </span>
+        <div className="flex flex-col gap-4 border-t border-white/10 py-8 text-sm text-white/40 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <span>
+              © {new Date().getFullYear()} {STUDIO.legalName || STUDIO.name}. All rights reserved.
+            </span>
+            <Link href="/terms" className="link-line hover:text-white">
+              Terms &amp; Conditions
+            </Link>
+            <Link href="/privacy" className="link-line hover:text-white">
+              Privacy Policy
+            </Link>
+          </div>
           <a href="#" className="link-line w-fit">
             Back to top ↑
           </a>
