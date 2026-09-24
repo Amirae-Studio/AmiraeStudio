@@ -5,7 +5,7 @@ import { QuoteForm } from "@/components/contact/QuoteForm";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Request a quote or start a 3D design, prototyping or fabrication project with AMIRAE STUDIO LLC.",
+  description: `Request a quote from AMIRAE STUDIO LLC for ${STUDIO.services}.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -37,8 +37,20 @@ export default function ContactPage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-sm text-muted">Studio</dt>
-                <dd className="mt-1">{STUDIO.address}</dd>
+                <dt className="text-sm text-muted">Business address</dt>
+                <dd className="mt-1">{STUDIO.businessAddress}</dd>
+              </div>
+              <div>
+                <dt className="text-sm text-muted">Registered office</dt>
+                <dd className="mt-1">{STUDIO.registeredOffice}</dd>
+              </div>
+              <div>
+                <dt className="text-sm text-muted">Phone</dt>
+                <dd className="mt-1">
+                  <a href={`tel:${STUDIO.phone.replace(/[^\d+]/g, "")}`} className="link-line">
+                    {STUDIO.phone}
+                  </a>
+                </dd>
               </div>
               <div>
                 <dt className="text-sm text-muted">Social</dt>

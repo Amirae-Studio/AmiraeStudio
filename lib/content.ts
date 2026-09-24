@@ -4,7 +4,13 @@ export const STUDIO = {
   name: "Amirae Studio",
   legalName: "AMIRAE STUDIO LLC",
   email: "contact@amirae.studio",
-  address: "30 N Gould St Ste R Sheridan, WY 82801",
+  phone: "(+1) 307-667-7411",
+  // Wyoming is the registered (legal) office; Madurai is where the studio actually operates.
+  registeredOffice: "30 N Gould St Ste R, Sheridan, WY 82801",
+  businessAddress: "5, Sornam Colony, Thirunagar, Madurai - 625006, Tamil Nadu, India",
+  // Canonical one-line service list — reuse this wherever the business is described.
+  services:
+    "3D modeling, product prototyping, 3D printing & fabrication, architectural models and interactive 3D web",
   logo: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/logo2.png",
   makerworld:
     "https://makerworld.com/en/crowdfunding/313-framecity-high-detailed-cities-in-frames",
@@ -222,8 +228,8 @@ export const PROCESS = [
 ];
 
 export const STATS = [
-  { value: "10+", label: "Years of hands-on 3D & engineering experience" },
-  { value: "$17k+", label: "Crowdfunded for FrameCity on MakerWorld" },
+  { value: "8+", label: "Years of hands-on 3D & engineering experience" },
+  { value: "$18k+", label: "Crowdfunded for FrameCity on MakerWorld" },
   { value: "100%", label: "Commercial IP transferred to clients" },
   { value: "24h", label: "Response time on every inquiry" },
 ];

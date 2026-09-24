@@ -106,8 +106,9 @@ export function Hero() {
           {/* No fade: the intro copy is the mobile LCP element and must paint before hydration. */}
           <Reveal delay={0.3} fade={false} className="md:col-span-5 md:col-start-7">
             <p className="text-lg leading-relaxed text-muted md:text-xl">
-              Amirae Studio is a 3D design and digital fabrication studio. We turn complex concepts into precise detail
-              — from miniature cityscapes to production-grade prototypes and interactive 3D web.
+              Amirae Studio is a 3D design and fabrication studio. We turn complex concepts into precise detail
+              through 3D modeling, product prototyping, 3D printing &amp; fabrication, architectural models and
+              interactive 3D web.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <PillButton href="/contact">Start a project</PillButton>

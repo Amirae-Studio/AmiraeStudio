@@ -28,7 +28,7 @@ const MILESTONES = [
   {
     label: "Crowdfunding",
     title: "FrameCity goes global",
-    desc: "Our modular, high-detail 3D-printed cityscapes launched on MakerWorld and passed $17000 in backer support — establishing our community across the U.S. and worldwide.",
+    desc: "Our modular, high-detail 3D-printed cityscapes launched on MakerWorld and passed $18,000 from 177 backers — establishing our community across the U.S. and worldwide.",
   },
   {
     label: "Today",

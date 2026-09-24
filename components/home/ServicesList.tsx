@@ -29,7 +29,7 @@ export function ServicesList() {
         </LineReveal>
         <Reveal className="md:col-span-5 md:col-start-8" delay={0.1}>
           <p className="text-lg leading-relaxed text-muted">
-            With 10+ years of hands-on experience, we partner with brands, hardware startups, architects and makers to
+            With 8+ years of hands-on experience, we partner with brands, hardware startups, architects and makers to
             take an idea from sketch to screen to shelf.
           </p>
         </Reveal>

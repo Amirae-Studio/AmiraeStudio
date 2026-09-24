@@ -5,10 +5,10 @@ import { ServicesList } from "@/components/home/ServicesList";
 import { WorkGrid } from "@/components/home/WorkGrid";
 import { Stats } from "@/components/home/Stats";
 import { Faq } from "@/components/site/Faq";
+import { STUDIO } from "@/lib/content";
 
 const TITLE = "Amirae Studio — 3D Design, Prototyping & Physical Modeling";
-const DESCRIPTION =
-  "AMIRAE STUDIO LLC is a premier 3D design and digital product studio specializing in high-precision 3D modeling, rapid product prototyping, physical 3D miniatures, and interactive digital engineering.";
+const DESCRIPTION = `AMIRAE STUDIO LLC is a 3D design and fabrication studio offering ${STUDIO.services}.`;
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },

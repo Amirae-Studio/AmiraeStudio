@@ -258,9 +258,19 @@ export function LegalDocViewer({
                     <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/10 border border-white/10">
                       <MapPin size={16} className="text-white shrink-0 mt-0.5" />
                       <div>
-                        <span className="text-white/60 block text-[10px]">Registered Entity Office</span>
+                        <span className="text-white/60 block text-[10px]">Registered Office</span>
                         <span className="text-white/90 text-xs leading-snug">
-                          {STUDIO.address}
+                          {STUDIO.registeredOffice}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/10 border border-white/10 sm:col-span-2">
+                      <MapPin size={16} className="text-white shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-white/60 block text-[10px]">Business Address</span>
+                        <span className="text-white/90 text-xs leading-snug">
+                          {STUDIO.businessAddress}
                         </span>
                       </div>
                     </div>

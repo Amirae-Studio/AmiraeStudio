@@ -227,7 +227,8 @@ const PRIVACY_SECTIONS: LegalSection[] = [
           <strong>{STUDIO.legalName || STUDIO.name}</strong><br />
           Data Protection &amp; Privacy Officer<br />
           Email: <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-4 hover:text-muted">{STUDIO.email}</a><br />
-          Address: {STUDIO.address}
+          Registered office: {STUDIO.registeredOffice}<br />
+          Business address: {STUDIO.businessAddress}
         </div>
       </>
     ),

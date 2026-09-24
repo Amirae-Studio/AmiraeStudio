@@ -24,8 +24,7 @@ export const metadata: Metadata = {
     default: "Amirae Studio — 3D Design, Prototyping & Physical Modeling",
     template: "%s — Amirae Studio",
   },
-  description:
-    "AMIRAE STUDIO LLC is a 3D design and digital fabrication studio: high-precision 3D modeling, rapid product prototyping, physical miniatures and interactive 3D web.",
+  description: `AMIRAE STUDIO LLC is a 3D design and fabrication studio offering ${STUDIO.services}.`,
 };
 
 const jsonLd = {
@@ -35,15 +34,29 @@ const jsonLd = {
   legalName: STUDIO.legalName,
   url: "https://www.amirae.studio",
   logo: STUDIO.logo,
+  description: `3D design and fabrication studio offering ${STUDIO.services}.`,
   email: STUDIO.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "30 N Gould St Ste R",
-    addressLocality: "Sheridan",
-    addressRegion: "WY",
-    postalCode: "82801",
-    addressCountry: "US",
-  },
+  telephone: "+1-307-667-7411",
+  address: [
+    {
+      "@type": "PostalAddress",
+      name: "Registered office",
+      streetAddress: "30 N Gould St Ste R",
+      addressLocality: "Sheridan",
+      addressRegion: "WY",
+      postalCode: "82801",
+      addressCountry: "US",
+    },
+    {
+      "@type": "PostalAddress",
+      name: "Business address",
+      streetAddress: "5, Sornam Colony, Thirunagar",
+      addressLocality: "Madurai",
+      addressRegion: "Tamil Nadu",
+      postalCode: "625006",
+      addressCountry: "IN",
+    },
+  ],
   sameAs: STUDIO.socials.map((s) => s.href),
 };
 

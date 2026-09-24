@@ -134,7 +134,7 @@ export function Footer() {
             </Link>
 
             <p className="max-w-sm leading-relaxed text-white/80 text-sm">
-              {STUDIO.legalName || STUDIO.name} — 3D modeling, prototyping, fabrication and interactive 3D web for brands and makers worldwide.
+              {STUDIO.legalName} — {STUDIO.services} for brands and makers worldwide.
             </p>
             
             <dl className="grid gap-2 text-[13px] text-white/60 pt-1">
@@ -143,19 +143,24 @@ export function Footer() {
                 <dd className="inline font-medium text-white/90">{STUDIO.legalName || STUDIO.name}</dd>
               </div>
               <div>
+                <dt className="inline text-white/60 font-mono text-[11px] uppercase tracking-wider">Registered office · </dt>
+                <dd className="inline text-white/70">{STUDIO.registeredOffice}</dd>
+              </div>
+              <div>
+                <dt className="inline text-white/60 font-mono text-[11px] uppercase tracking-wider">Business address · </dt>
+                <dd className="inline text-white/70">{STUDIO.businessAddress}</dd>
+              </div>
+              <div>
                 <dt className="inline text-white/60 font-mono text-[11px] uppercase tracking-wider">Email · </dt>
                 <dd className="inline">
                   <a href={`mailto:${STUDIO.email}`} className="link-line text-white/90">{STUDIO.email}</a>
                 </dd>
               </div>
               <div>
-                <dt className="inline text-white/60 font-mono text-[11px] uppercase tracking-wider">Address · </dt>
-                <dd className="inline text-white/70">{STUDIO.address}</dd>
-              </div>
-              <div>
                 <dt className="inline text-white/60 font-mono text-[11px] uppercase tracking-wider">Phone · </dt>
-                <dd className="inline text-white/70">(+1) 307-667-7411</dd>
-           
+                <dd className="inline">
+                  <a href={`tel:${STUDIO.phone.replace(/[^\d+]/g, "")}`} className="link-line text-white/70">{STUDIO.phone}</a>
+                </dd>
               </div>
             </dl>
           </div>

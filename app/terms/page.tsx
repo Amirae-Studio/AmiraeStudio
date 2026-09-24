@@ -26,7 +26,7 @@ const TERMS_SECTIONS: LegalSection[] = [
     content: (
       <>
         <p>
-          These Terms &amp; Conditions (&quot;Terms&quot;, &quot;Agreement&quot;) constitute a legally binding agreement between you (whether an individual, commercial entity, or enterprise, hereinafter referred to as &quot;Client&quot;, &quot;you&quot;, or &quot;your&quot;) and <strong>{STUDIO.legalName || STUDIO.name}</strong> (&quot;Company&quot;, &quot;Amirae Studio&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), operating globally with registration and administrative offices at {STUDIO.address}.
+          These Terms &amp; Conditions (&quot;Terms&quot;, &quot;Agreement&quot;) constitute a legally binding agreement between you (whether an individual, commercial entity, or enterprise, hereinafter referred to as &quot;Client&quot;, &quot;you&quot;, or &quot;your&quot;) and <strong>{STUDIO.legalName || STUDIO.name}</strong> (&quot;Company&quot;, &quot;Amirae Studio&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), with its registered office at {STUDIO.registeredOffice} and its business address at {STUDIO.businessAddress}.
         </p>
         <p>
           By accessing our website (<a href="https://www.amirae.studio" className="text-ink font-semibold underline underline-offset-4 hover:text-muted">amirae.studio</a>), commissioning bespoke 3D design work, purchasing physical prints or CAD files, or executing a Statement of Work (&quot;SOW&quot;), you acknowledge that you have read, understood, and agreed to be bound by these Terms in full. If you are entering into this Agreement on behalf of a company, you represent that you possess the legal authority to bind that entity.
@@ -280,7 +280,8 @@ const TERMS_SECTIONS: LegalSection[] = [
           <strong>{STUDIO.legalName || STUDIO.name}</strong><br />
           Legal Affairs &amp; Contracts Desk<br />
           Email: <a href={`mailto:${STUDIO.email}`} className="text-ink font-semibold underline underline-offset-4 hover:text-muted">{STUDIO.email}</a><br />
-          Address: {STUDIO.address}
+          Registered office: {STUDIO.registeredOffice}<br />
+          Business address: {STUDIO.businessAddress}
         </div>
       </>
     ),
