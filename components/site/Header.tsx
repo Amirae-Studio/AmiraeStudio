@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -55,21 +56,25 @@ export function Header() {
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-6 sm:px-10 md:py-8">
           <Link href="/" className="group relative flex items-center" aria-label="Amirae Studio home">
             <div className="relative flex h-15 w-auto items-center">
-              <img
+              <Image
                 src={STUDIO.logo}
                 alt="Amirae Studio"
+                width={60}
+                height={60}
                 className="h-15 w-auto object-contain transition-all duration-300 ease-out group-hover:scale-95 group-hover:opacity-0"
               />
-              <img
+              <Image
                 src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/brand/amirae_studio_logo-removebg-preview.webp"
-                alt="Amirae Studio Alternate"
+                alt=""
+                width={367}
+                height={243}
                 className="absolute inset-0 h-15 w-auto object-contain opacity-0 scale-95 transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100"
               />
             </div>
           </Link>
 
           <nav className="hidden items-center gap-9 text-[15px] lg:flex" aria-label="Primary">
-            {NAV_LINKS.slice(1).map((link) => (
+            {NAV_LINKS.slice(0).map((link) => (
               <Link key={link.name} href={link.href} className="link-line pb-0.5">
                 {link.name}
               </Link>
@@ -140,7 +145,7 @@ export function Header() {
               transition={{ duration: 0.8, ease: EASE }}
             >
               <div>
-                <p className="mb-6 text-sm text-white/40">Menu</p>
+                <p className="mb-6 text-sm text-white/60">Menu</p>
                 <ul className="space-y-1">
                   {NAV_LINKS.map((link, i) => (
                     <li key={link.name} className="overflow-hidden">
@@ -167,7 +172,7 @@ export function Header() {
 
               <div className="mt-16 grid gap-8 text-[15px] sm:grid-cols-2">
                 <div>
-                  <p className="mb-3 text-sm text-white/40">Social</p>
+                  <p className="mb-3 text-sm text-white/60">Social</p>
                   <ul className="space-y-2">
                     {STUDIO.socials.map((s) => (
                       <li key={s.name}>
@@ -179,7 +184,7 @@ export function Header() {
                   </ul>
                 </div>
                 <div>
-                  <p className="mb-3 text-sm text-white/40">Get in touch</p>
+                  <p className="mb-3 text-sm text-white/60">Get in touch</p>
                   <a href={`mailto:${STUDIO.email}`} className="link-line">
                     {STUDIO.email}
                   </a>

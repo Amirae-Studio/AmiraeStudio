@@ -3,9 +3,10 @@ import { LegalDocViewer, LegalSection } from "@/components/LegalDocViewer";
 import { STUDIO } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — AMIRAE STUDIO LLC",
+  title: "Terms & Conditions",
   description:
     "Review the commercial terms, milestone billing, intellectual property assignment, digital file delivery, and physical fabrication policies of AMIRAE STUDIO LLC.",
+  alternates: { canonical: "/terms" },
   openGraph: {
     title: "Terms & Conditions — AMIRAE STUDIO LLC",
     description:
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     url: "https://www.amirae.studio/terms",
     siteName: STUDIO.legalName || STUDIO.name,
     type: "website",
+    images: ["/opengraph-image"],
   },
 };
 

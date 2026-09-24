@@ -248,7 +248,7 @@ export function LegalDocViewer({
                     <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/10 border border-white/10">
                       <Mail size={16} className="text-white shrink-0" />
                       <div className="truncate">
-                        <span className="text-white/40 block text-[10px]">Email Legal Desk</span>
+                        <span className="text-white/60 block text-[10px]">Email Legal Desk</span>
                         <a href={`mailto:${STUDIO.email}`} className="font-semibold text-white hover:underline">
                           {STUDIO.email}
                         </a>
@@ -258,7 +258,7 @@ export function LegalDocViewer({
                     <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/10 border border-white/10">
                       <MapPin size={16} className="text-white shrink-0 mt-0.5" />
                       <div>
-                        <span className="text-white/40 block text-[10px]">Registered Entity Office</span>
+                        <span className="text-white/60 block text-[10px]">Registered Entity Office</span>
                         <span className="text-white/90 text-xs leading-snug">
                           {STUDIO.address}
                         </span>

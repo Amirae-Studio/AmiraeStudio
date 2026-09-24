@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV_LINKS, STUDIO } from "@/lib/content";
+import { STUDIO } from "@/lib/content";
 import { LineReveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
 import { PillButton } from "./PillButton";
@@ -78,7 +79,7 @@ export function Footer() {
         {showCta && (
           <div className="relative border-b border-white/10 pb-20 pt-24 md:pb-28 md:pt-36">
             <div className="flex items-center gap-4 text-white/50">
-              <img src={STUDIO.logo} alt="" className="h-12 w-12 rounded-full bg-white/10 object-contain p-1.5" />
+              <Image src={STUDIO.logo} alt="" width={48} height={48} className="h-12 w-12 rounded-full bg-white/10 object-contain p-1.5" />
               <span className="text-[15px]">Have a project in mind?</span>
             </div>
             <LineReveal className="mt-8 text-[13vw] font-medium leading-[0.95] tracking-[-0.04em] md:text-[8.5vw] xl:text-[132px]">
@@ -115,14 +116,18 @@ export function Footer() {
             {/* Logo with smooth interactive hover */}
             <Link href="/" className="group relative inline-flex items-center" aria-label="Amirae Studio">
               <div className="relative flex h-14 w-auto items-center">
-                <img
+                <Image
                   src={STUDIO.logo}
                   alt="Amirae Studio"
+                  width={56}
+                  height={56}
                   className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-95 group-hover:opacity-0"
                 />
-                <img
+                <Image
                   src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/brand/amirae_studio_logo-removebg-preview.webp"
-                  alt="Amirae Studio Alternate"
+                  alt=""
+                  width={367}
+                  height={243}
                   className="absolute inset-0 h-14 w-auto object-contain opacity-0 scale-95 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
                 />
               </div>
@@ -134,22 +139,23 @@ export function Footer() {
             
             <dl className="grid gap-2 text-[13px] text-white/60 pt-1">
               <div>
-                <dt className="inline text-white/40 font-mono text-[11px] uppercase tracking-wider">Entity · </dt>
+                <dt className="inline text-white/60 font-mono text-[11px] uppercase tracking-wider">Entity · </dt>
                 <dd className="inline font-medium text-white/90">{STUDIO.legalName || STUDIO.name}</dd>
               </div>
               <div>
-                <dt className="inline text-white/40 font-mono text-[11px] uppercase tracking-wider">Email · </dt>
+                <dt className="inline text-white/60 font-mono text-[11px] uppercase tracking-wider">Email · </dt>
                 <dd className="inline">
                   <a href={`mailto:${STUDIO.email}`} className="link-line text-white/90">{STUDIO.email}</a>
                 </dd>
               </div>
               <div>
-                <dt className="inline text-white/40 font-mono text-[11px] uppercase tracking-wider">Address · </dt>
+                <dt className="inline text-white/60 font-mono text-[11px] uppercase tracking-wider">Address · </dt>
                 <dd className="inline text-white/70">{STUDIO.address}</dd>
               </div>
               <div>
-                <dt className="inline text-white/40 font-mono text-[11px] uppercase tracking-wider">Phone · </dt>
-                <dd className="inline text-white/70">(+91) 8951478989</dd>
+                <dt className="inline text-white/60 font-mono text-[11px] uppercase tracking-wider">Phone · </dt>
+                <dd className="inline text-white/70">(+1) 307-667-7411</dd>
+           
               </div>
             </dl>
           </div>
@@ -157,7 +163,7 @@ export function Footer() {
           <div className="md:col-span-7 grid grid-cols-2 gap-8 sm:grid-cols-3">
             {FOOTER_COLUMNS.map((col) => (
               <div key={col.title}>
-                <p className="text-sm font-medium text-white/40">{col.title}</p>
+                <p className="text-sm font-medium text-white/60">{col.title}</p>
                 <ul className="mt-3.5 space-y-2.5">
                   {col.links.map((link) => {
                     const isExternal = link.href.startsWith("http");

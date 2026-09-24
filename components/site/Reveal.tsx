@@ -9,16 +9,18 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 export function Reveal({
   children,
   delay = 0,
+  fade = true,
   className,
 }: {
   children: ReactNode;
   delay?: number;
+  fade?: boolean;
   className?: string;
 }) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 40 }}
+      initial={fade ? { opacity: 0, y: 40 } : { y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10% 0px" }}
       transition={{ duration: 1, ease: EASE, delay }}

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PROJECTS, type Project } from "@/lib/content";
 import { LineReveal, Reveal } from "@/components/site/Reveal";
 import { PillButton } from "@/components/site/PillButton";
@@ -10,10 +11,12 @@ function ProjectCard({ project }: { project: Project }) {
         className="relative aspect-[4/5] overflow-hidden rounded-3xl md:aspect-[5/6]"
         style={{ backgroundColor: project.tint }}
       >
-        <img
+        <Image
           src={project.image}
           alt={project.title}
-          className="h-full w-full object-strech transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105"
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-[1.2s] ease-out-expo group-hover:scale-105"
         />
         <span className="absolute left-5 top-5 rounded-full bg-white/90 px-3.5 py-1.5 text-xs font-medium backdrop-blur">
           {project.status}

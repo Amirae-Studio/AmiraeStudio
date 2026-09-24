@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { STATS, STUDIO } from "@/lib/content";
 import { PageHero } from "@/components/site/PageHero";
@@ -8,11 +9,13 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Learn about AMIRAE STUDIO LLC — our story, capabilities, customers and cross-disciplinary team of 3D artists and engineers.",
+  alternates: { canonical: "/about" },
   openGraph: {
     title: "About — AMIRAE STUDIO LLC",
     description: "AMIRAE STUDIO LLC company story, capabilities, customers and team.",
     url: "https://www.amirae.studio/about",
     siteName: "AMIRAE STUDIO LLC",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -62,15 +65,24 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-[1600px] px-5 sm:px-10">
         <Reveal className="grid gap-4 md:grid-cols-12">
-          <div className="overflow-hidden rounded-3xl md:col-span-7">
-            <img
-              src="/f5.jpg"
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl md:col-span-7">
+            <Image
+              src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/IMG-20260831-WA0048.jpg"
               alt="Close-up of a white 3D-printed skyline model"
-              className="aspect-[4/3] w-full object-cover"
+              fill
+              preload
+              sizes="(min-width: 768px) 58vw, 100vw"
+              className="object-cover"
             />
           </div>
-          <div className="overflow-hidden rounded-3xl md:col-span-5">
-            <img src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/images.jpg" alt="The Amirae team at work" className="h-full min-h-72 w-full object-cover" />
+          <div className="relative min-h-72 overflow-hidden rounded-3xl md:col-span-5">
+            <Image
+              src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/images.jpg"
+              alt="The Amirae team at work"
+              fill
+              sizes="(min-width: 768px) 42vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </Reveal>
       </section>
@@ -110,7 +122,7 @@ export default function AboutPage() {
                 key={c}
                 className="flex items-baseline gap-5 border-b border-white/15 py-8 text-2xl font-medium tracking-tight"
               >
-                <span className="text-sm font-normal text-white/40">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm font-normal text-white/60">{String(i + 1).padStart(2, "0")}</span>
                 {c}
               </li>
             ))}
@@ -128,11 +140,13 @@ export default function AboutPage() {
 
       <section className="mx-auto grid max-w-[1600px] items-center gap-12 px-5 py-28 sm:px-10 md:grid-cols-12 md:py-40">
         <Reveal className="md:col-span-6">
-          <div className="overflow-hidden rounded-3xl bg-soft">
-            <img
-              src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/makerworld.jpg"
+          <div className="relative aspect-square overflow-hidden rounded-3xl bg-soft">
+            <Image
+              src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/Launch-thumbnail1.jpg"
               alt="FrameCity model on MakerWorld"
-              className="aspect-square w-full object-cover"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
             />
           </div>
         </Reveal>

@@ -1,19 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image, { getImageProps } from "next/image";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { LineReveal, Reveal } from "@/components/site/Reveal";
 import { PillButton } from "@/components/site/PillButton";
 
 const CAPSULE_IMAGES = [
-  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/f1.jpg",
-  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/maze2.jpg",
-  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/f4.jpg",
-  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/f5.jpg",
-  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/paris-frame.jpg",
-  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/london-preview.jpg",
-  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/f1.jpg",
-];
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/f1-crop.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/pill1.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/pill2.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/pill3.jpg",
+  "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/pill4.jpg",
+].map((src) => getImageProps({ src, alt: "", width: 320, height: 144 }).props);
 
 function HeroImageCapsule() {
   const [index, setIndex] = useState(0);
@@ -22,8 +21,10 @@ function HeroImageCapsule() {
   // Preload all capsule images on mount
   useEffect(() => {
     CAPSULE_IMAGES.forEach((src) => {
-      const img = new Image();
-      img.src = src;
+      // Warm the resized capsule variants, not the full-size originals.
+      const img = new window.Image();
+      img.srcset = src.srcSet ?? "";
+      img.src = src.src;
     });
   }, []);
 
@@ -62,7 +63,8 @@ function HeroImageCapsule() {
       <AnimatePresence mode="popLayout">
         <motion.img
           key={index}
-          src={CAPSULE_IMAGES[index]}
+          src={CAPSULE_IMAGES[index].src}
+          srcSet={CAPSULE_IMAGES[index].srcSet}
           alt="Amirae 3D Design work preview"
           initial={{ opacity: 0, scale: isFastCycling ? 1 : 1.12 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -101,7 +103,8 @@ export function Hero() {
         </LineReveal>
 
         <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12">
-          <Reveal delay={0.3} className="md:col-span-5 md:col-start-7">
+          {/* No fade: the intro copy is the mobile LCP element and must paint before hydration. */}
+          <Reveal delay={0.3} fade={false} className="md:col-span-5 md:col-start-7">
             <p className="text-lg leading-relaxed text-muted md:text-xl">
               Amirae Studio is a 3D design and digital fabrication studio. We turn complex concepts into precise detail
               — from miniature cityscapes to production-grade prototypes and interactive 3D web.
@@ -121,10 +124,12 @@ export function Hero() {
           style={{ scale, borderRadius: radius }}
           className="relative mx-auto aspect-[16/10] w-full max-w-[1600px] overflow-hidden bg-soft md:aspect-[16/8]"
         >
-          <img
-            src="/f1.jpg"
+          <Image
+            src="https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/IMG-20260831-WA0037.jpg"
             alt="A white 3D-printed city skyline model in a black frame on a wooden desk"
-            className="h-full w-full object-cover"
+            fill
+            sizes="(min-width: 1600px) 1600px, 100vw"
+            className="object-cover object-bottom"
           />
         </motion.div>
       </div>

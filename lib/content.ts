@@ -35,6 +35,8 @@ export type Project = {
   link?: string;
 };
 
+// Current images are 1:1, 2:3 and 16:9 posters with text near the edges, so titles get clipped;
+// upload ~1200×1440 versions with the text kept inside the centre.
 export const PROJECTS: Project[] = [
   {
     id: "01",
@@ -43,7 +45,7 @@ export const PROJECTS: Project[] = [
     summary: "Hand-modeled cities, turned into framed 3D art",
     desc: "A curated collection of hand-modeled cities, transformed into refined, customizable 3D art. Every city includes its most iconic districts, skylines and landmarks, modeled for maximum print quality.",
     tags: ["3D Printing", "Miniatures"],
-    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/framecity.jpeg",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/Launch-thumbnail1.jpg",
     tint: "#d8ecff",
     link: "https://frame-city.vercel.app/",
   },
@@ -54,7 +56,7 @@ export const PROJECTS: Project[] = [
     summary: "A modular marble-maze builder you can print",
     desc: "Design your own path by combining crafted modular pieces. Shape every twist, turn and obstacle, preview it in 3D and export a ready-to-print masterpiece.",
     tags: ["Web 3D", "3D Printing"],
-    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/maze.png",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/maze3.png",
     tint: "#e9e9e9",
     link: "https://maze-foundry.vercel.app/",
   },
@@ -75,7 +77,7 @@ export const PROJECTS: Project[] = [
     summary: "Monuments and towers as printable scale models",
     desc: "Iconic buildings and timeless towers, each hand-crafted by 3D artists to capture proportion, silhouette and façade detail in a printable model.",
     tags: ["Architecture", "3D Models"],
-    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/heri.png",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/20260722_130751.jpg",
     tint: "#dfe6f0",
   },
   {
@@ -120,7 +122,7 @@ export const SERVICES: Service[] = [
     clients: "Consumer electronics brands, agencies, game studios, indie developers",
     engagement: "Milestone-based fees or licensing per asset pack",
     timeline: "3–10 business days per batch",
-    image: "/f5.jpg",
+    image: "https://i.pinimg.com/736x/8e/e6/65/8ee6655b8a9d0b85af1f597c04d2d677.jpg", //ADD IMAGE HERE — /f5.jpg is missing from public/ (currently 404s).
   },
   {
     id: "product-design",
@@ -156,7 +158,7 @@ export const SERVICES: Service[] = [
     clients: "Collectors, architecture firms, interior designers, consumers",
     engagement: "Unit sales, custom fabrication fees, batch runs",
     timeline: "5–14 business days incl. QA",
-    image: "/f4.jpg",
+    image: "https://i.pinimg.com/736x/7e/7f/9c/7e7f9c6faa36041e2dc4a0cd552cbaee.jpg",
   },
   {
     id: "architectural",
@@ -174,7 +176,7 @@ export const SERVICES: Service[] = [
     clients: "Cultural institutions, heritage projects, developers, collectors",
     engagement: "Fixed-price contracts and limited-edition runs",
     timeline: "2–6 weeks",
-    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/paris-frame.jpg",
+    image: "https://joewkzjnrikotpgzyywh.supabase.co/storage/v1/object/public/gallery/amiraeimages/london-table.jpg",
   },
   {
     id: "web-3d",

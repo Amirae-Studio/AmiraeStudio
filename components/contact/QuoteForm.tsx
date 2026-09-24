@@ -116,6 +116,11 @@ export function QuoteForm() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Honeypot: humans never see this checkbox, so a ticked one means a bot filled the form.
+    if (new FormData(e.currentTarget as HTMLFormElement).get("botcheck")) {
+      setStatus("sent");
+      return;
+    }
     setStatus("sending");
 
     const message = `
@@ -167,6 +172,7 @@ ${info.brief}
         </motion.div>
       ) : (
         <motion.form key="form" onSubmit={onSubmit} exit={{ opacity: 0, y: -20 }}>
+          <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
           <Group label="What can we help with?">
             {SERVICE_OPTIONS.map((o) => (
               <Chip key={o} active={service === o} onClick={() => setService(o)}>

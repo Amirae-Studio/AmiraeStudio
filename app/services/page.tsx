@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { PROCESS, SERVICES } from "@/lib/content";
 import { PageHero } from "@/components/site/PageHero";
@@ -8,11 +9,13 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "3D modeling, product prototyping, 3D printing fabrication, architectural scale modeling and interactive 3D web engineering by AMIRAE STUDIO LLC.",
+  alternates: { canonical: "/services" },
   openGraph: {
     title: "Services — AMIRAE STUDIO LLC",
     description: "Commercial 3D design, fabrication and web services by AMIRAE STUDIO LLC.",
     url: "https://www.amirae.studio/services",
     siteName: "AMIRAE STUDIO LLC",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -59,11 +62,13 @@ export default function ServicesPage() {
             className="grid scroll-mt-24 gap-10 border-t border-line py-16 md:grid-cols-12 md:gap-12 md:py-24"
           >
             <Reveal className="md:col-span-5">
-              <div className="overflow-hidden rounded-3xl bg-soft">
-                <img
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-soft">
+                <Image
                   src={s.image}
-                  alt=""
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-out-expo hover:scale-105"
+                  alt={s.title}
+                  fill
+                  sizes="(min-width: 768px) 42vw, 100vw"
+                  className="object-cover transition-transform duration-[1.2s] ease-out-expo hover:scale-105"
                 />
               </div>
             </Reveal>

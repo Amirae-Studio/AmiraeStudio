@@ -6,6 +6,7 @@ import { QuoteForm } from "@/components/contact/QuoteForm";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Request a quote or start a 3D design, prototyping or fabrication project with AMIRAE STUDIO LLC.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

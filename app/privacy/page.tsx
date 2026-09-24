@@ -3,9 +3,10 @@ import { LegalDocViewer, LegalSection } from "@/components/LegalDocViewer";
 import { STUDIO } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — AMIRAE STUDIO LLC",
+  title: "Privacy Policy",
   description:
     "Learn how AMIRAE STUDIO LLC collects, protects, stores, and handles client CAD blueprints, personal information, and international transaction data.",
+  alternates: { canonical: "/privacy" },
   openGraph: {
     title: "Privacy Policy — AMIRAE STUDIO LLC",
     description:
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     url: "https://www.amirae.studio/privacy",
     siteName: STUDIO.legalName || STUDIO.name,
     type: "website",
+    images: ["/opengraph-image"],
   },
 };
 
